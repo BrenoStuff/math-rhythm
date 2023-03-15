@@ -2,7 +2,9 @@ window.onload = new function() {
 
         let contador = 0;
         let notas = [];
-        
+     
+        // ----------- PODE IGNORAR ESSE TRECHO ---------------- //
+
         let botao1 = document.getElementById("key1");
         let botao2 = document.getElementById("key2");
         let botao3 = document.getElementById("key3");
@@ -17,6 +19,8 @@ window.onload = new function() {
         console.log(posKey2);
         console.log(posKey3);
         console.log(posKey4);
+
+        // ----------------------------------------------------- //
 
         function criarDiv() {
                 contador++;
@@ -54,6 +58,6 @@ window.onload = new function() {
                 }
         }
         
-        //setInterval(criarDiv, 500);
-        //setInterval(descerDiv, 5);
-} 
+        setInterval(criarDiv, 500);
+        setInterval(descerDiv, 5);
+}
