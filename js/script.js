@@ -1,6 +1,6 @@
 window.onload = new function() {
 
-        let contador = 0;
+        let contador = 0; //c
         let notas = [];
      
         // ----------- PODE IGNORAR ESSE TRECHO ---------------- //
