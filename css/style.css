@@ -1,7 +1,17 @@
+:root {
+        --cor1: #C36FF6;
+        --cor2: #8B66D4;
+        --cor3: #807BEA;
+        --cor4: #667fd4;
+        --cor5: #76B7F6;
+}
+
 body {
         padding: 0px;
         margin: 0px;
         border: 0px;
+        background-color: black;
+        color: white;
 }
 
 .notes {
@@ -22,6 +32,7 @@ body {
 .path {
         height: 90vh;
         overflow: hidden;
+        background-image: linear-gradient(to right, var(--cor2) 0%, var(--cor3) 50%, var(--cor1) 100%);
 }
 
 .notes {
@@ -30,10 +41,11 @@ body {
 
 .buttons {
         height: 9vh;
+        background-image: radial-gradient(circle at center, var(--cor4), var(--cor5));
 }
 
 .keys {
-        background-color: white;
+        background-color: var(--cor4);
         border-radius: 100%;
         border: 1px solid black;
 }
@@ -48,4 +60,11 @@ body {
         border-radius: 100%;
         height: 50px;
         width: 75px;
+}
+
+.hud {
+        background-image: linear-gradient(to right, var(--cor2) 0%, var(--cor3) 50%, var(--cor1) 100%);
+        width: 25%;
+        text-align: center;
+        border: 4px solid var(--cor5);
 }
