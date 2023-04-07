@@ -117,7 +117,7 @@ window.onload = new function() {
                                         combos.innerHTML = "Combo: " + combo;
                                         contagem.innerHTML = pontos;
                                         comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
-                         ''               nota.remove();
+                                        nota.remove();
                                         console.log(nota.style.top);
                                         nota.style.top = null;
                                         notas.shift();
