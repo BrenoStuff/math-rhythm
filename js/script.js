@@ -1,5 +1,9 @@
 window.onload = new function() {
 
+        var som = document.getElementById("audio");
+        var iniciar = 0;
+        var desespero = [1, 2];
+
         let contador = 0;
         let notas = [];
         let pontos = 0;
@@ -40,10 +44,6 @@ window.onload = new function() {
                         notas.push(newNote);
                 } 
 
-                //console.log(i);
-                //console.log(contador);
-                //console.log(newNote.getBoundingClientRect().y);
-
                 i = 0;
         }
 
@@ -74,7 +74,7 @@ window.onload = new function() {
                 } else {
                         btt =0;
                 }
-        })
+        });
 
         document.addEventListener("keyup", (e) => {
                         if (e.key === "D" || e.key === "d") {
@@ -94,7 +94,14 @@ window.onload = new function() {
                                 console.log("Tecla K pressionada!");
                                 key4.style.backgroundColor = "var(--cor3)";
                         }
-        })
+        });
+
+        document.addEventListener("keydown", (e) => {
+                if (e.key === "P" || e.key === "p") {
+                        iniciar = 1;
+                        som.play();
+                }
+        });
 
         function descerDiv() {
 
@@ -151,11 +158,30 @@ window.onload = new function() {
 
                 }
         }
+        
+        var abudabi = setInterval(verificaIniciar, 1);
 
         function maiorValor(arr) {
                 return Math.max(...arr);
               }
 
-        setInterval(criarDiv, 200);
-        setInterval(descerDiv, 5);
+        function verificaIniciar() {
+                if (iniciar == 1) {
+                        clearInterval (abudabi);
+                        var criar = setInterval(criarDiv, 200);
+                        var descer = setInterval(descerDiv, 5);
+                        som.addEventListener("ended", () => {
+                                clearInterval(criar);
+                                setTimeout(() => {
+                                        alert("TERMINOU!")
+                                }, 3000);
+                        });
+                } else {
+                        console.log ("OK");
+                }
+        }
+
+        for (i = 0; i <= desespero.length - 1; i++) {
+                verificaIniciar();
+        }
 }
