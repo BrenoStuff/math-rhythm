@@ -112,7 +112,6 @@ window.onload = new function() {
 	});
 
 	function descerDiv() {
-
 		for (i = 0; i <= notas.length; i++) {
 			for (j = 0; j < 1; j++) {
 				let nota = notas[i][j];
@@ -182,7 +181,7 @@ window.onload = new function() {
 			som.addEventListener("ended", () => {
 					clearInterval(criar);
 					setTimeout(() => {
-							window.location.assign("file:///C:/Users/55129/Desktop/Projeto/public/views/finalScore.html");
+							window.location.assign("https://math-rhythm.pages.dev/views/finalScore");
 					}, 3000);
 			});
 		} else {
