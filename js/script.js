@@ -4,23 +4,20 @@ window.onload = new function() {
         var iniciar = 0;
         var desespero = [1, 2];
 
-        let contador = 0;
-        let notas = [];
-        let pontos = 0;
-        let comboMax = [];
+        var contador = 0;
+        var notas = [];
+        var pontos = 0;
+        var comboMax = [];
 
-        let btt = 0;
-        let err = 0;
-        let acc = 0;
-        let combo = 0;
+        var btt = 0;
+        var err = 0;
+        var acc = 0;
+        var combo = 0;
      
         // ----------- PODE IGNORAR ESSE TRECHO ---------------- //
 
-        let botao = document.getElementById("key1");
-
-        // ----------------------------------------------------- //
-
-        let posKey = botao.getBoundingClientRect();
+        var botao = document.getElementById("key1");
+        var posKey = botao.getBoundingClientRect();
 
         // ----------------------------------------------------- //
 
@@ -35,22 +32,21 @@ window.onload = new function() {
                 var newNote = document.createElement("div");
                 newNote.classList.add("beat");
                 
-                let i = Math.floor(Math.random() * 4) + 1;
+                var i = Math.floor(Math.random() * 4) + 1;
 
                 if (contador % 2 == 0){
+                        var teste = [];
                         var piano = document.getElementById("noteMove" + i);
-                        newNote.innerHTML = contador + ""; 
+                        newNote.innerHTML = contador + "";
                         piano.appendChild(newNote);
-                        notas.push(newNote);
+                        teste.push(newNote, i);
+                        notas.push(teste);
+
+                        console.log(botao);
                 } 
 
                 i = 0;
         }
-
-        var key1 = document.querySelector("#key1");
-        var key2 = document.querySelector("#key2");
-        var key3 = document.querySelector("#key3");
-        var key4 = document.querySelector("#key4");
 
         document.addEventListener("keydown", (e) => {
                 if (!e.repeat) {
@@ -59,15 +55,15 @@ window.onload = new function() {
                                 key1.style.backgroundColor = "black";
                                 console.log("Tecla D pressionada!");
                         } else if (e.key === "F" || e.key === "f") {
-                                btt = 1;
+                                btt = 2;
                                 console.log("Tecla F pressionada!");
                                 key2.style.backgroundColor = "black";
                         } else if (e.key === "J" || e.key === "j") {
-                                btt = 1;
+                                btt = 3;
                                 console.log("Tecla J pressionada!");
                                 key3.style.backgroundColor = "black";
                         } else if (e.key === "K" || e.key === "k") {
-                                btt = 1;
+                                btt = 4;
                                 console.log("Tecla K pressionada!");
                                 key4.style.backgroundColor = "black";
                         }
@@ -106,54 +102,56 @@ window.onload = new function() {
         function descerDiv() {
 
                 for (i = 0; i <= notas.length; i++) {
-                        let nota = notas[i];
-                        let posY = parseInt(nota.style.top || 0);
-                        posY += 3;
-                        nota.style.top = posY + "px";
+                        for (j = 0; j < 1; j++) {
+                                let nota = notas[i][j];
+                                let posY = parseInt(nota.style.top || 0);
+                                posY += 3;
+                                nota.style.top = posY + "px";
 
-                        if (posY >= posKey.y - 70 && posY < posKey.y - 40 && btt == 1) {
-                                err = err + 1;
-                                comboMax.push(combo);
-                                combo = 0;
-                                pontos += 150;
-                                erros.innerHTML = "Erros: " + err;
-                                combos.innerHTML = "Combo: " + combo;
-                                contagem.innerHTML = pontos;
-                                comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
-                                nota.remove();
-                                console.log(nota.style.top);
-                                nota.style.top = null;
-                                notas.shift();
-                        } else if (posY >= posKey.y - 40 && posY < posKey.y + 30 && btt == 1) {
-                                acc = acc + 1;
-                                combo++;
-                                comboMax.push(combo);
-                                if (combo != 0) {
-                                        pontos += 300 * combo;
-                                } else {
-                                        pontos += 300;
+                                if (posY >= posKey.y - 70 && posY < posKey.y - 40 && btt == notas[i][j + 1]) {
+                                        err = err + 1;
+                                        comboMax.push(combo);
+                                        combo = 0;
+                                        pontos += 150;
+                                        erros.innerHTML = "Erros: " + err;
+                                        combos.innerHTML = "Combo: " + combo;
+                                        contagem.innerHTML = pontos;
+                                        comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
+                                        nota.remove();
+                                        console.log(nota.style.top);
+                                        nota.style.top = null;
+                                        notas.shift();
+                                } else if (posY >= posKey.y - 40 && posY < posKey.y + 30 && btt == notas[i][j + 1]) {
+                                        acc = acc + 1;
+                                        combo++;
+                                        comboMax.push(combo);
+                                        if (combo != 0) {
+                                                pontos += 300 * combo;
+                                        } else {
+                                                pontos += 300;
+                                        }
+                                        acertos.innerHTML = "Acertos: " + acc;
+                                        combos.innerHTML = "Combo: " + combo;
+                                        contagem.innerHTML = pontos;
+                                        comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
+                                        nota.remove();
+                                        console.log(nota.style.top);
+                                        nota.style.top = null;
+                                        notas.shift();
+                                } else if (posY >= posKey.y + 30 && btt == 0 || posY >= posKey.y + 30 && btt == notas[i][j + 1]) {
+                                        err = err + 1;
+                                        comboMax.push(combo);
+                                        combo = 0;
+                                        pontos += 75;
+                                        erros.innerHTML = "Erros: " + err;
+                                        combos.innerHTML = "Combo: " + combo;
+                                        contagem.innerHTML = pontos;
+                                        comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
+                                        nota.remove();
+                                        console.log(nota.style.top);
+                                        nota.style.top = null;
+                                        notas.shift();
                                 }
-                                acertos.innerHTML = "Acertos: " + acc;
-                                combos.innerHTML = "Combo: " + combo;
-                                contagem.innerHTML = pontos;
-                                comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
-                                nota.remove();
-                                console.log(nota.style.top);
-                                nota.style.top = null;
-                                notas.shift();
-                        } else if (posY >= posKey.y + 30 && btt == 0 || posY >= posKey.y + 30 && btt == 1) {
-                                err = err + 1;
-                                comboMax.push(combo);
-                                combo = 0;
-                                pontos += 75;
-                                erros.innerHTML = "Erros: " + err;
-                                combos.innerHTML = "Combo: " + combo;
-                                contagem.innerHTML = pontos;
-                                comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
-                                nota.remove();
-                                console.log(nota.style.top);
-                                nota.style.top = null;
-                                notas.shift();
                         }
 
                 }
@@ -173,7 +171,7 @@ window.onload = new function() {
                         som.addEventListener("ended", () => {
                                 clearInterval(criar);
                                 setTimeout(() => {
-                                        alert("TERMINOU!")
+                                        window.location.assign("file:///C:/Users/55129/Desktop/Projeto/public/views/finalScore.html");
                                 }, 3000);
                         });
                 } else {
