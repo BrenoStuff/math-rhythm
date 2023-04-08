@@ -168,16 +168,9 @@ window.onload = new function() {
 
 	// Botão para começar o jogo
     document.querySelector('#button-play').addEventListener('click', function() {
-<<<<<<< HEAD
-        setTimeout(() => {
-		iniciar = 1;
-        	som.play();
-	}, 5000);
-=======
 		// Carregar Configurações
 		setupMobile();
 		setupConfig();
->>>>>>> da866f47f2588d8ab055400cfe61c52edfbca9ce
 
 		// Timer para começar o jogo realmente
 		setTimeout(function() {
