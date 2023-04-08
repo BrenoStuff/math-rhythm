@@ -296,12 +296,8 @@ window.onload = new function() {
 			som.addEventListener("ended", () => {
 				clearInterval(criar);
 				setTimeout(() => {
-<<<<<<< HEAD
 					var pontuacoes = [pontos, acc, err, cbFinal];
 					window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
-=======
-					window.location.assign("https://math-rhythm.pages.dev/views/finalScore");
->>>>>>> da866f47f2588d8ab055400cfe61c52edfbca9ce
 				}, 3000);
 			});
 		} else {
