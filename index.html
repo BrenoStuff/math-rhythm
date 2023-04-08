@@ -15,14 +15,40 @@
 		<div>
 			<button id="button-play"> play </button>
 			<button id="button-config"> configurar </button>
+			<button id="check"> check </button>
 		</div>
 	</div>
 	<div id="menu-config" class="modal">
-		<button id="button-back"> voltar </button>
+		<div>
+			<p> Selecione a plataforma:
+				<select id="plataforma">
+					<option value="desktop">Desktop</option>
+					<option value="mobile">Mobile</option>
+				</select>
+			</p>
+			<p> Selecione a música:
+				<select id="musica">
+					<option value="msc/music1.mp3">cYsmix - Classic Pursuit</option>
+					<option value="msc/music2.mp3">GHOSTEMANE - Mercury.mp3</option>
+				</select>
+			</p>
+			<p> Números:
+				<select id="modo">
+					<option value="par">Pares</option>
+					<option value="impar">Ímpares</option>
+					<option value="primo">Primos</option>
+				</select>
+			</p>
+			<p> Volume:
+				<input type="range" id="volume" min="0" max="100" value="50">
+				<button id="btn-music"> checar </button>
+			</p>
+			<button id="button-back"> voltar </button>
+		</div>
 	</div>
 
 	<!-- Hud lateral do score -->
-	<div class="container score">
+	<div id="scoreboard" class="container score">
 		<div class="hud">
 			<p id="contagem">000000</p>
 		</div>
@@ -43,10 +69,15 @@
 		</div>
 		<div>
 			<audio id="audio" controls hidden>
+<<<<<<< HEAD
 				<source src="msc/amazing audio.mp3" type="audio/mpeg" hidden>
+=======
+				<source src="msc/music1.mp3" type="audio/mpeg" hidden>
+>>>>>>> da866f47f2588d8ab055400cfe61c52edfbca9ce
 				Seu navegador não suporta o elemento de áudio.
 			</audio>
 		</div>
+		<div id="countdown" style="color: white"></div>
 	</div>
 
 	<!-- Mapa do jogo -->
