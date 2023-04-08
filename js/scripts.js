@@ -209,6 +209,11 @@ window.onload = new function() {
 		volume = document.querySelector('#volume').value / 100
     });
 
+	// Botão check geral
+	document.getElementById("check").addEventListener("click", function() {
+		alert('Plataforma: ' + plataform + '\rMúsica: ' + music + '\rModo: ' + gamemode + '\rVolume: ' + volume);
+	});
+	
 	// Botão de checar audio
 	document.querySelector('#btn-music').addEventListener('click', function() {
 		som.src = document.querySelector('#musica').value
