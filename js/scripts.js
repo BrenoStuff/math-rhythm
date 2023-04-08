@@ -13,6 +13,8 @@ window.onload = new function() {
 	var err = 0;
 	var acc = 0;
 	var combo = 0;
+
+	var cbFinal;
  
 	// ----------- PODE IGNORAR ESSE TRECHO ---------------- //
 
@@ -94,8 +96,10 @@ window.onload = new function() {
 
 	// Botão para começar o jogo
     document.querySelector('#button-play').addEventListener('click', function() {
-        iniciar = 1;
-        som.play();
+        setTimeout(() => {
+		iniciar = 1;
+        	som.play();
+	}, 5000);
 
         document.getElementById("menu").style.display = "none";
     });
@@ -128,6 +132,7 @@ window.onload = new function() {
 					erros.innerHTML = "Erros: " + err;
 					combos.innerHTML = "Combo: " + combo;
 					contagem.innerHTML = pontos;
+					cbFinal = maiorValor(comboMax)
 					comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
 					nota.remove();
 					console.log(nota.style.top);
@@ -145,6 +150,7 @@ window.onload = new function() {
 					acertos.innerHTML = "Acertos: " + acc;
 					combos.innerHTML = "Combo: " + combo;
 					contagem.innerHTML = pontos;
+					cbFinal = maiorValor(comboMax)
 					comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
 					nota.remove();
 					console.log(nota.style.top);
@@ -158,6 +164,7 @@ window.onload = new function() {
 					erros.innerHTML = "Erros: " + err;
 					combos.innerHTML = "Combo: " + combo;
 					contagem.innerHTML = pontos;
+					cbFinal = maiorValor(comboMax)
 					comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
 					nota.remove();
 					console.log(nota.style.top);
@@ -182,7 +189,8 @@ window.onload = new function() {
 			som.addEventListener("ended", () => {
 				clearInterval(criar);
 				setTimeout(() => {
-					window.location.assign("https://math-rhythm.pages.dev/views/finalScoree");
+					var pontuacoes = [pontos, acc, err, cbFinal];
+					window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
 				}, 3000);
 			});
 		} else {
