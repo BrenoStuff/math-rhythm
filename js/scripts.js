@@ -54,11 +54,7 @@ window.onload = new function() {
 	// Área de configuração
 	var setupConfig = function() {
 		// Configuração da música
-		if (music === "msc/music1") {
-			som.src = "msc/music1.mp3";
-		} else if (music === "music2") {
-			som.src = "msc/music2.mp3";
-		}
+		som.src = music;
 	}
 
 	// Adaptação para Mobile
@@ -152,6 +148,7 @@ window.onload = new function() {
     document.querySelector('#button-play').addEventListener('click', function() {
 		// Carregar Configurações
 		setupMobile();
+		setupConfig();
 
 		// Timer para começar o jogo realmente
 		setTimeout(function() {
