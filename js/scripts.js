@@ -19,6 +19,8 @@ window.onload = new function() {
 	var err = 0;
 	var acc = 0;
 	var combo = 0;
+
+	var cbFinal;
  
 	// ----------- PODE IGNORAR ESSE TRECHO ---------------- //
 
@@ -166,13 +168,16 @@ window.onload = new function() {
 
 	// Botão para começar o jogo
     document.querySelector('#button-play').addEventListener('click', function() {
+<<<<<<< HEAD
+        setTimeout(() => {
+		iniciar = 1;
+        	som.play();
+	}, 5000);
+=======
 		// Carregar Configurações
 		setupMobile();
 		setupConfig();
-		alert(gamemode)
-		alert(plataform)
-		alert(music)
-		alert(volume)
+>>>>>>> da866f47f2588d8ab055400cfe61c52edfbca9ce
 
 		// Timer para começar o jogo realmente
 		setTimeout(function() {
@@ -230,6 +235,7 @@ window.onload = new function() {
 					erros.innerHTML = "Erros: " + err;
 					combos.innerHTML = "Combo: " + combo;
 					contagem.innerHTML = pontos;
+					cbFinal = maiorValor(comboMax)
 					comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
 					nota.remove();
 					console.log(nota.style.top);
@@ -247,6 +253,7 @@ window.onload = new function() {
 					acertos.innerHTML = "Acertos: " + acc;
 					combos.innerHTML = "Combo: " + combo;
 					contagem.innerHTML = pontos;
+					cbFinal = maiorValor(comboMax)
 					comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
 					nota.remove();
 					console.log(nota.style.top);
@@ -260,6 +267,7 @@ window.onload = new function() {
 					erros.innerHTML = "Erros: " + err;
 					combos.innerHTML = "Combo: " + combo;
 					contagem.innerHTML = pontos;
+					cbFinal = maiorValor(comboMax)
 					comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
 					nota.remove();
 					console.log(nota.style.top);
@@ -288,7 +296,12 @@ window.onload = new function() {
 			som.addEventListener("ended", () => {
 				clearInterval(criar);
 				setTimeout(() => {
+<<<<<<< HEAD
+					var pontuacoes = [pontos, acc, err, cbFinal];
+					window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
+=======
 					window.location.assign("https://math-rhythm.pages.dev/views/finalScore");
+>>>>>>> da866f47f2588d8ab055400cfe61c52edfbca9ce
 				}, 3000);
 			});
 		} else {

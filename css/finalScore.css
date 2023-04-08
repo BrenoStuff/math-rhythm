@@ -25,3 +25,13 @@ body {
         border: 20px solid var(--cor5);
         border-radius: 30px;
 }
+
+.imgPTS {
+        background-color: white;
+        color: black;
+}
+
+.botoes {
+        border-radius: 20px;
+        width: 100%;
+}
