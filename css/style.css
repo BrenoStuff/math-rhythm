@@ -21,6 +21,7 @@ body {
 .score {
 	position: absolute;
 	font-size: 2.5em;
+	display: block;
 }
 
 .map {
@@ -95,7 +96,6 @@ body {
 }
 
 #menu div {
-	width: 100px;
 	height: 100px;
 }
 
@@ -110,9 +110,4 @@ body {
 	justify-content: center;
 	background-image: url('../img/menu-config.png');
 	background-size: 100% 100%;
-}
-
-#menu-config div {
-	width: 100px;
-	height: 100px;
 }

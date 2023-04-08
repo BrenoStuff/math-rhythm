@@ -1,4 +1,9 @@
 window.onload = new function() {
+	// Configs
+	var plataform = "desktop";
+	var music = "msc/music1.mp3";
+	var gamemode = "normal";
+	var volume = 0.5;
 
 	var som = document.getElementById("audio");
 	var iniciar = 0;
@@ -41,11 +46,62 @@ window.onload = new function() {
 			piano.appendChild(newNote);
 			teste.push(newNote, i);
 			notas.push(teste);
-
-			console.log(botao);
-		} 
+		}
 
 		i = 0;
+	}
+
+	// Área de configuração
+	var setupConfig = function() {
+		// Configuração da música
+		if (music === "msc/music1") {
+			som.src = "msc/music1.mp3";
+		} else if (music === "music2") {
+			som.src = "msc/music2.mp3";
+		}
+	}
+
+	// Adaptação para Mobile
+	var setupMobile = function() {
+		if (plataform === "mobile") {
+			document.getElementById("scoreboard").style.display = "none";
+
+			document.addEventListener("touchstart", (e) => {
+				if (e.target.id === "key1") {
+					btt = 1;
+					key1.style.backgroundColor = "black";
+				} else if (e.target.id === "key2") {
+					btt = 2;
+					key2.style.backgroundColor = "black";
+				} else if (e.target.id === "key3") {
+					btt = 3;
+					key3.style.backgroundColor = "black";
+				} else if (e.target.id === "key4") {
+					btt = 4;
+					key4.style.backgroundColor = "black";
+				} else {
+					btt = 0;
+				}
+			});
+
+			document.addEventListener("touchend", (e) => {
+				if (e.target.id === "key1") {
+					btt = 0;
+					key1.style.backgroundColor = "var(--cor3)";
+				} else if (e.target.id === "key2") {
+					btt = 0;
+					key2.style.backgroundColor = "var(--cor3)";
+				} else if (e.target.id === "key3") {
+					btt = 0;
+					key3.style.backgroundColor = "var(--cor3)";
+				} else if (e.target.id === "key4") {
+					btt = 0;
+					key4.style.backgroundColor = "var(--cor3)";
+				} else {
+					btt = 0;
+				}
+			});
+		}
 	}
 
 	document.addEventListener("keydown", (e) => {
@@ -57,18 +113,18 @@ window.onload = new function() {
 			} else if (e.key === "F" || e.key === "f") {
 				btt = 2;
 				console.log("Tecla F pressionada!");
-					key2.style.backgroundColor = "black";
+				key2.style.backgroundColor = "black";
 			} else if (e.key === "J" || e.key === "j") {
 				btt = 3;
 				console.log("Tecla J pressionada!");
-					key3.style.backgroundColor = "black";
+				key3.style.backgroundColor = "black";
 			} else if (e.key === "K" || e.key === "k") {
 				btt = 4;
 				console.log("Tecla K pressionada!");
 				key4.style.backgroundColor = "black";
 			}
 		} else {
-			btt =0;
+			btt = 0;
 		}
 	});
 
@@ -94,9 +150,14 @@ window.onload = new function() {
 
 	// Botão para começar o jogo
     document.querySelector('#button-play').addEventListener('click', function() {
-        iniciar = 1;
-        som.play();
+		// Carregar Configurações
+		setupMobile();
 
+		// Timer para começar o jogo realmente
+		setTimeout(function() {
+			iniciar = 1;
+        	som.play();
+		}, 1000 * 3);
         document.getElementById("menu").style.display = "none";
     });
 
@@ -110,7 +171,27 @@ window.onload = new function() {
     document.querySelector('#button-back').addEventListener('click', function() {
         document.getElementById("menu").style.display = "flex";
         document.getElementById("menu-config").style.display = "none";
+
+		// Coisas de configuração
+		plataform = document.querySelector('#plataforma').value
+		music = document.querySelector('#musica').value
+		mode = document.querySelector('#modo').value
+		volume = document.querySelector('#volume').value / 100
     });
+
+	// Botão de checar audio
+	document.querySelector('#btn-music').addEventListener('click', function() {
+		som.src = document.querySelector('#musica').value
+		if (document.getElementById("btn-music").innerHTML == "Parar") {
+			som.pause();
+			som.currentTime = 0;
+			document.getElementById("btn-music").innerHTML = "Tocar"
+		} else {
+			document.getElementById("btn-music").innerHTML = "Parar"
+			som.volume = document.querySelector('#volume').value / 100
+			som.play();
+		}
+	});
 
 	function descerDiv() {
 		for (i = 0; i <= notas.length; i++) {
@@ -182,7 +263,7 @@ window.onload = new function() {
 			som.addEventListener("ended", () => {
 				clearInterval(criar);
 				setTimeout(() => {
-					window.location.assign("https://math-rhythm.pages.dev/views/finalScoree");
+					window.location.assign("https://math-rhythm.pages.dev/views/finalScore");
 				}, 3000);
 			});
 		} else {
