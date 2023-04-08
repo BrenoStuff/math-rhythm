@@ -48,7 +48,7 @@
 	</div>
 
 	<!-- Hud lateral do score -->
-	<div id="scoreboard" class="container score">
+	<div id="scoreboard">
 		<div class="hud">
 			<p id="contagem">000000</p>
 		</div>
@@ -64,35 +64,29 @@
 		<div class="hud">
 			<p id="maxCombo">Combo Max: 0</p>
 		</div>
-		<div class="hud">
+		<div id="teclasInfo" class="hud">
 			<p>Teclas: D F J K</p>
 		</div>
-		<div>
-			<audio id="audio" controls hidden>
-<<<<<<< HEAD
-				<source src="msc/amazing audio.mp3" type="audio/mpeg" hidden>
-=======
-				<source src="msc/music1.mp3" type="audio/mpeg" hidden>
->>>>>>> da866f47f2588d8ab055400cfe61c52edfbca9ce
-				Seu navegador não suporta o elemento de áudio.
-			</audio>
-		</div>
-		<div id="countdown" style="color: white"></div>
 	</div>
+
+	<audio id="audio" controls hidden>
+		<source src="msc/amazing audio.mp3" type="audio/mpeg" hidden>
+		Seu navegador não suporta o elemento de áudio.
+	</audio>
 
 	<!-- Mapa do jogo -->
 	<div class="container map">
 		<div class="row path">
-			<div class="col-md-3 notes" id="noteMove1"></div>
-			<div class="col-md-3 notes" id="noteMove2"></div>
-			<div class="col-md-3 notes" id="noteMove3"></div>
-			<div class="col-md-3 notes" id="noteMove4"></div>
+			<div class="col-3 notes" id="noteMove1"></div>
+			<div class="col-3 notes" id="noteMove2"></div>
+			<div class="col-3 notes" id="noteMove3"></div>
+			<div class="col-3 notes" id="noteMove4"></div>
 		</div>
 		<div class="row buttons">
-			<div class="col-md-3 keys" id="key1"></div>
-			<div class="col-md-3 keys" id="key2"></div>
-			<div class="col-md-3 keys" id="key3"></div>
-			<div class="col-md-3 keys" id="key4"></div>
+			<div class="col-3 keys" id="key1"></div>
+			<div class="col-3 keys" id="key2"></div>
+			<div class="col-3 keys" id="key3"></div>
+			<div class="col-3 keys" id="key4"></div>
 		</div>
 	</div>
 

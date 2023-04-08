@@ -6,6 +6,7 @@ window.onload = new function() {
 	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
 	var volume = 0.5;
 
+	var scoreboard = document.getElementById("scoreboard"); 
 	var som = document.getElementById("audio");
 	var iniciar = 0;
 	var desespero = [1, 2];
@@ -80,9 +81,15 @@ window.onload = new function() {
 	}
 
 	// Adaptação para Mobile
-	var setupMobile = function() {
+	var setupPlataform = function() {
 		if (plataform === "mobile") {
-			document.getElementById("scoreboard").style.display = "none";
+			// const huds = document.querySelectorAll('.hud');
+			// huds.forEach(hud => {
+			// hud.style.width = '20%';
+			// });
+
+			document.getElementById("teclasInfo").remove()
+			scoreboard.style.display = "flex"
 
 			document.addEventListener("touchstart", (e) => {
 				if (e.target.id === "key1") {
@@ -119,6 +126,10 @@ window.onload = new function() {
 					btt = 0;
 				}
 			});
+		} else if (plataform === "desktop") {
+			scoreboard.classList.add = "score"
+			scoreboard.classList.add = "container"
+			scoreboard.style.display = null
 		}
 	}
 
@@ -169,7 +180,7 @@ window.onload = new function() {
 	// Botão para começar o jogo
     document.querySelector('#button-play').addEventListener('click', function() {
 		// Carregar Configurações
-		setupMobile();
+		setupPlataform();
 		setupConfig();
 
 		// Timer para começar o jogo realmente
