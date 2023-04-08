@@ -2,7 +2,8 @@ window.onload = new function() {
 	// Configs
 	var plataform = "desktop";
 	var music = "msc/music1.mp3";
-	var gamemode = "normal";
+	var gamemode = "par";
+	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
 	var volume = 0.5;
 
 	var som = document.getElementById("audio");
@@ -39,15 +40,33 @@ window.onload = new function() {
 		
 		var i = Math.floor(Math.random() * 4) + 1;
 
-		if (contador % 2 == 0){
+		if (gamemode === "par") {
+			if (contador % 2 == 0){
+				var teste = [];
+				var piano = document.getElementById("noteMove" + i);
+				newNote.innerHTML = contador + "";
+				piano.appendChild(newNote);
+				teste.push(newNote, i);
+				notas.push(teste);
+			}
+		} else if (gamemode === "impar") {
+			if (contador % 2 != 0){
+				var teste = [];
+				var piano = document.getElementById("noteMove" + i);
+				newNote.innerHTML = contador + "";
+				piano.appendChild(newNote);
+				teste.push(newNote, i);
+				notas.push(teste);
+			}
+		} else if (gamemode === "primo") {
+			const randomPrimo = Math.floor(Math.random() * array_primo.length);
 			var teste = [];
 			var piano = document.getElementById("noteMove" + i);
-			newNote.innerHTML = contador + "";
+			newNote.innerHTML = array_primo[randomPrimo] + "";
 			piano.appendChild(newNote);
 			teste.push(newNote, i);
 			notas.push(teste);
 		}
-
 		i = 0;
 	}
 
@@ -55,6 +74,7 @@ window.onload = new function() {
 	var setupConfig = function() {
 		// Configuração da música
 		som.src = music;
+		som.volume = volume;
 	}
 
 	// Adaptação para Mobile
@@ -149,6 +169,10 @@ window.onload = new function() {
 		// Carregar Configurações
 		setupMobile();
 		setupConfig();
+		alert(gamemode)
+		alert(plataform)
+		alert(music)
+		alert(volume)
 
 		// Timer para começar o jogo realmente
 		setTimeout(function() {
@@ -172,7 +196,7 @@ window.onload = new function() {
 		// Coisas de configuração
 		plataform = document.querySelector('#plataforma').value
 		music = document.querySelector('#musica').value
-		mode = document.querySelector('#modo').value
+		gamemode = document.querySelector('#modo').value
 		volume = document.querySelector('#volume').value / 100
     });
 
@@ -255,7 +279,11 @@ window.onload = new function() {
 	function verificaIniciar() {
 		if (iniciar == 1) {
 			clearInterval (abudabi);
-			var criar = setInterval(criarDiv, 200);
+			if (gamemode != "primo"){
+				var criar = setInterval(criarDiv, 200);
+			} else {
+				var criar = setInterval(criarDiv, 500);
+			}
 			var descer = setInterval(descerDiv, 5);
 			som.addEventListener("ended", () => {
 				clearInterval(criar);
