@@ -13,7 +13,7 @@ window.onload = new function() {
 	var err = 0;
 	var acc = 0;
 	var combo = 0;
-     
+ 
 	// ----------- PODE IGNORAR ESSE TRECHO ---------------- //
 
 	var botao = document.getElementById("key1");
@@ -57,11 +57,11 @@ window.onload = new function() {
 			} else if (e.key === "F" || e.key === "f") {
 				btt = 2;
 				console.log("Tecla F pressionada!");
-				key2.style.backgroundColor = "black";
+					key2.style.backgroundColor = "black";
 			} else if (e.key === "J" || e.key === "j") {
 				btt = 3;
 				console.log("Tecla J pressionada!");
-				key3.style.backgroundColor = "black";
+					key3.style.backgroundColor = "black";
 			} else if (e.key === "K" || e.key === "k") {
 				btt = 4;
 				console.log("Tecla K pressionada!");
@@ -92,24 +92,25 @@ window.onload = new function() {
 		}
 	});
 
-    // Botão para começar o jogo
-	document.querySelector('#button-play').addEventListener('click', function() {
-		iniciar = 1;
-		som.play();
-		document.getElementById("menu").style.display = "none";
-	});
+	// Botão para começar o jogo
+    document.querySelector('#button-play').addEventListener('click', function() {
+        iniciar = 1;
+        som.play();
 
-	// Botão de configurações do jogo
-	document.querySelector('#button-config').addEventListener('click', function() {
-		document.getElementById("menu").style.display = "none";
-		document.getElementById("menu-config").style.display = "flex";
-	});
+        document.getElementById("menu").style.display = "none";
+    });
 
-	// Botão de voltar
-	document.querySelector('#button-back').addEventListener('click', function() {
-		document.getElementById("menu").style.display = "flex";
-		document.getElementById("menu-config").style.display = "none";
-	});
+    // Botão de configurações do jogo
+    document.querySelector('#button-config').addEventListener('click', function() {
+        document.getElementById("menu").style.display = "none";
+        document.getElementById("menu-config").style.display = "flex";
+    });
+
+    // Botão de voltar
+    document.querySelector('#button-back').addEventListener('click', function() {
+        document.getElementById("menu").style.display = "flex";
+        document.getElementById("menu-config").style.display = "none";
+    });
 
 	function descerDiv() {
 		for (i = 0; i <= notas.length; i++) {
@@ -166,11 +167,11 @@ window.onload = new function() {
 			}
 		}
 	}
-        
+	
 	var abudabi = setInterval(verificaIniciar, 1);
 
 	function maiorValor(arr) {
-			return Math.max(...arr);
+		return Math.max(...arr);
 	}
 
 	function verificaIniciar() {
@@ -179,17 +180,17 @@ window.onload = new function() {
 			var criar = setInterval(criarDiv, 200);
 			var descer = setInterval(descerDiv, 5);
 			som.addEventListener("ended", () => {
-					clearInterval(criar);
-					setTimeout(() => {
-							window.location.assign("https://math-rhythm.pages.dev/views/finalScore");
-					}, 3000);
+				clearInterval(criar);
+				setTimeout(() => {
+					window.location.assign("https://math-rhythm.pages.dev/views/finalScoree");
+				}, 3000);
 			});
 		} else {
 			console.log ("OK");
 		}
 	}
 
-        for (i = 0; i <= desespero.length - 1; i++) {
-                verificaIniciar();
-        }
+	for (i = 0; i <= desespero.length - 1; i++) {
+		verificaIniciar();
+	}
 }

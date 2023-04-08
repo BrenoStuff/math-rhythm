@@ -1,82 +1,118 @@
 :root {
-        --cor1: #C36FF6;
-        --cor2: #8B66D4;
-        --cor3: #807BEA;
-        --cor4: #667fd4;
-        --cor5: #76B7F6;
+	--cor1: #C36FF6;
+	--cor2: #8B66D4;
+	--cor3: #807BEA;
+	--cor4: #667fd4;
+	--cor5: #76B7F6;
 }
 
 body {
-        padding: 0px;
-        margin: 0px;
-        border: 0px;
-        background-color: black;
-        color: white;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	background-color: black;
+	color: white;
 }
 
 .notes {
-        width: 25%;
+	width: 25%;
 }
 
 .score {
-        position: absolute;
-        font-size: 2.5em;
+	position: absolute;
+	font-size: 2.5em;
 }
 
 .map {
-        width: 400px;
-        height: 100vh;
-        border: 1px solid black;
+	width: 400px;
+	height: 100vh;
+	border: 1px solid black;
 }
 
 .path {
-        height: 90vh;
-        overflow: hidden;
-        background-image: linear-gradient(to right, var(--cor2) 0%, var(--cor3) 50%, var(--cor1) 100%);
+	height: 90vh;
+	overflow: hidden;
+	background-image: linear-gradient(to right, var(--cor2) 0%, var(--cor3) 50%, var(--cor1) 100%);
 }
 
 .notes {
-        border: 1px solid black;
+	border: 1px solid black;
 }
 
 .buttons {
-        height: 9vh;
-        background-image: radial-gradient(circle at center, var(--cor4), var(--cor5));
+	height: 9vh;
+	background-image: radial-gradient(circle at center, var(--cor4), var(--cor5));
 }
 
 .keys {
-        background-color: var(--cor4);
-        border-radius: 100%;
-        border: 1px solid black;
+	background-color: var(--cor4);
+	border-radius: 100%;
+	border: 1px solid black;
 }
 
 .beat {
-        position: absolute;
-        top: 0px;
-        color: white;
-        text-align: center;
-        font-size: 2em;
-        background-color: black;
-        border-radius: 100%;
-        height: 50px;
-        width: 75px;
+	position: absolute;
+	top: 0px;
+	color: white;
+	text-align: center;
+	font-size: 2em;
+	background-color: black;
+	border-radius: 100%;
+	height: 50px;
+	width: 75px;
 }
 
 .hud {
-        background-image: linear-gradient(to right, var(--cor2) 0%, var(--cor3) 50%, var(--cor1) 100%);
-        width: 25%;
-        text-align: center;
-        border: 4px solid var(--cor5);
+	background-image: linear-gradient(to right, var(--cor2) 0%, var(--cor3) 50%, var(--cor1) 100%);
+	width: 25%;
+	text-align: center;
+	border: 4px solid var(--cor5);
 }
 
 .pontuacaoFinal {
-        width: 50%;
-        text-align: center;
-        font-size: 2em;
+	width: 50%;
+	text-align: center;
+	font-size: 2em;
 }
 
 .pontos {
-        background-color: #8B66D4;
-        border: 20px solid var(--cor5);
-        border-radius: 30px;
+	background-color: #8B66D4;
+	border: 20px solid var(--cor5);
+	border-radius: 30px;
+}
+
+#menu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-image: url('../img/menu.png');
+	background-size: 100% 100%;
+}
+
+#menu div {
+	width: 100px;
+	height: 100px;
+}
+
+#menu-config {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-image: url('../img/menu-config.png');
+	background-size: 100% 100%;
+}
+
+#menu-config div {
+	width: 100px;
+	height: 100px;
 }
