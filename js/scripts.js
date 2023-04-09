@@ -6,6 +6,7 @@ window.onload = new function() {
 	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
 	var volume = 0.5;
 
+	var mapDiv = document.getElementById('map');
 	var scoreboard = document.getElementById("scoreboard"); 
 	var som = document.getElementById("audio");
 	var iniciar = 0;
@@ -211,7 +212,7 @@ window.onload = new function() {
 
 	// Botão check geral
 	document.getElementById("check").addEventListener("click", function() {
-		alert('Plataforma: ' + plataform + '\rMúsica: ' + music + '\rModo: ' + gamemode + '\rVolume: ' + volume);
+		alert('Plataforma: ' + plataform + '\rMúsica: ' + music + '\rModo: ' + gamemode + '\rVolume: ' + volume + '\rAltura da tela: ' + mapDiv.offsetHeight + 'px');
 	});
 	
 	// Botão de checar audio
