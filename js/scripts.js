@@ -90,6 +90,8 @@ window.onload = new function() {
 			// });
 
 			document.getElementById("teclasInfo").remove()
+			scoreboard.classList.remove("score")
+			scoreboard.classList.remove("container")
 			scoreboard.style.display = "flex"
 
 			document.addEventListener("touchstart", (e) => {
