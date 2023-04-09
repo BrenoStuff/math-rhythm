@@ -127,8 +127,8 @@ window.onload = new function() {
 				}
 			});
 		} else if (plataform === "desktop") {
-			scoreboard.classList.add = "score"
-			scoreboard.classList.add = "container"
+			scoreboard.classList.add("score")
+			scoreboard.classList.add("container")
 			scoreboard.style.display = null
 		}
 	}
