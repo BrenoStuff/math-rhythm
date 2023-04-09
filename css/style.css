@@ -54,6 +54,7 @@ body {
 
 .beat {
 	position: absolute;
+	pointer-events: none;
 	top: 0px;
 	color: white;
 	text-align: center;
