@@ -90,7 +90,9 @@ window.onload = new function() {
 			// });
 
 			document.getElementById("teclasInfo").remove()
-			mapDiv.style.height = window.innerHeight + "px";
+			var tamanhoTela = window.innerHeight;
+			document.getElementById("path").style.height = (tamanhoTela / 100 * 9.1) + "px";
+			document.getElementById("path-buttons").style.height = (tamanhoTela / 100 * 90.9) + "px";
 			scoreboard.classList.remove("score")
 			scoreboard.classList.remove("container")
 			scoreboard.style.display = "none"
