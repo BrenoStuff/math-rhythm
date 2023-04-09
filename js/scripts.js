@@ -90,7 +90,7 @@ window.onload = new function() {
 			// });
 
 			document.getElementById("teclasInfo").remove()
-			mapDiv.style.height = (window.innerHeight - document.getElementById("mapButtons").offsetHeight / 2) + "px";
+			mapDiv.style.height = window.innerHeight + "px";
 			scoreboard.classList.remove("score")
 			scoreboard.classList.remove("container")
 			scoreboard.style.display = "none"
