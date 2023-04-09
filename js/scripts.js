@@ -1,7 +1,7 @@
 window.onload = new function() {
 	// Configs
 	var plataform = "desktop";
-	var music = "msc/music1.mp3";
+	var music = "msc/music2.mp3";
 	var gamemode = "par";
 	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
 	var volume = 0.5;
