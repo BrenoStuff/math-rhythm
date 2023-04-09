@@ -92,7 +92,7 @@ window.onload = new function() {
 			document.getElementById("teclasInfo").remove()
 			scoreboard.classList.remove("score")
 			scoreboard.classList.remove("container")
-			scoreboard.style.display = "flex"
+			scoreboard.style.display = "none"
 
 			document.addEventListener("touchstart", (e) => {
 				if (e.target.id === "key1") {
