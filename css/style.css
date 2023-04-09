@@ -92,12 +92,29 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-image: url('../img/menu.png');
+	background-image: url('../img/menu.jpg');
 	background-size: 100% 100%;
 }
 
 #menu div {
-	height: 100px;
+	width: 20%;
+	height: 40%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+#menu div button {
+	width: 100%;
+	height: 10vh;
+	border-radius: 25px;
+	border: none;
+	background-color: white;
+}
+
+#menu div button:hover {
+	background-color: #8B66D4;
 }
 
 #menu-config {
@@ -111,4 +128,16 @@ body {
 	justify-content: center;
 	background-image: url('../img/menu-config.png');
 	background-size: 100% 100%;
+}
+
+#button-back {
+	width: 100%;
+	height: 10vh;
+	border-radius: 25px;
+	border: none;
+	background-color: white;
+}
+
+#button-back:hover {
+	background-color: #8B66D4;
 }
