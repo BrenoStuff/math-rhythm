@@ -40,6 +40,8 @@ window.onload = new function() {
 	function criarDiv() {
 		contador++;
 		var newNote = document.createElement("div");
+		var txt = document.createElement("p");
+		txt.classList.add("txt");
 		newNote.classList.add("beat");
 		
 		var i = Math.floor(Math.random() * 4) + 1;
@@ -48,8 +50,9 @@ window.onload = new function() {
 			if (contador % 2 == 0){
 				var teste = [];
 				var piano = document.getElementById("noteMove" + i);
-				newNote.innerHTML = contador + "";
 				piano.appendChild(newNote);
+				newNote.appendChild(txt);
+				txt.innerHTML = contador;
 				teste.push(newNote, i);
 				notas.push(teste);
 			}
@@ -100,16 +103,16 @@ window.onload = new function() {
 			document.addEventListener("touchstart", (e) => {
 				if (e.target.id === "key1") {
 					btt = 1;
-					key1.style.backgroundColor = "black";
+					key1.style.backgroundColor = "#9c009f";
 				} else if (e.target.id === "key2") {
 					btt = 2;
-					key2.style.backgroundColor = "black";
+					key2.style.backgroundColor = "#9c009f";
 				} else if (e.target.id === "key3") {
 					btt = 3;
-					key3.style.backgroundColor = "black";
+					key3.style.backgroundColor = "#9c009f";
 				} else if (e.target.id === "key4") {
 					btt = 4;
-					key4.style.backgroundColor = "black";
+					key4.style.backgroundColor = "#9c009f";
 				} else {
 					btt = 0;
 				}
@@ -118,16 +121,16 @@ window.onload = new function() {
 			document.addEventListener("touchend", (e) => {
 				if (e.target.id === "key1") {
 					btt = 0;
-					key1.style.backgroundColor = "var(--cor3)";
+					key1.style.backgroundColor = "white";
 				} else if (e.target.id === "key2") {
 					btt = 0;
-					key2.style.backgroundColor = "var(--cor3)";
+					key2.style.backgroundColor = "white";
 				} else if (e.target.id === "key3") {
 					btt = 0;
-					key3.style.backgroundColor = "var(--cor3)";
+					key3.style.backgroundColor = "white";
 				} else if (e.target.id === "key4") {
 					btt = 0;
-					key4.style.backgroundColor = "var(--cor3)";
+					key4.style.backgroundColor = "white";
 				} else {
 					btt = 0;
 				}
@@ -143,20 +146,20 @@ window.onload = new function() {
 		if (!e.repeat) {
 			if (e.key === "D" || e.key === "d") {
 				btt = 1;
-				key1.style.backgroundColor = "black";
+				key1.style.backgroundColor = "#9c009f";
 				console.log("Tecla D pressionada!");
 			} else if (e.key === "F" || e.key === "f") {
 				btt = 2;
 				console.log("Tecla F pressionada!");
-				key2.style.backgroundColor = "black";
+				key2.style.backgroundColor = "#9c009f";
 			} else if (e.key === "J" || e.key === "j") {
 				btt = 3;
 				console.log("Tecla J pressionada!");
-				key3.style.backgroundColor = "black";
+				key3.style.backgroundColor = "#9c009f";
 			} else if (e.key === "K" || e.key === "k") {
 				btt = 4;
 				console.log("Tecla K pressionada!");
-				key4.style.backgroundColor = "black";
+				key4.style.backgroundColor = "#9c009f";
 			}
 		} else {
 			btt = 0;
@@ -167,19 +170,19 @@ window.onload = new function() {
 		if (e.key === "D" || e.key === "d") {
 			btt = 0;
 			console.log("Tecla D pressionada!");
-			key1.style.backgroundColor = "var(--cor3)";
+			key1.style.backgroundColor = "white";
 		} else if (e.key === "F" || e.key === "f") {
 			btt = 0;
 			console.log("Tecla F pressionada!");
-			key2.style.backgroundColor = "var(--cor3)";
+			key2.style.backgroundColor = "white";
 		} else if (e.key === "J" || e.key === "j") {
 			btt = 0;
 			console.log("Tecla J pressionada!");
-			key3.style.backgroundColor = "var(--cor3)";
+			key3.style.backgroundColor = "white";
 		} else if (e.key === "K" || e.key === "k") {
 			btt = 0;
 			console.log("Tecla K pressionada!");
-			key4.style.backgroundColor = "var(--cor3)";
+			key4.style.backgroundColor = "white";
 		}
 	});
 
@@ -247,11 +250,11 @@ window.onload = new function() {
 					comboMax.push(combo);
 					combo = 0;
 					pontos += 150;
-					erros.innerHTML = "Erros: " + err;
-					combos.innerHTML = "Combo: " + combo;
+					erros.innerHTML = err;
+					combos.innerHTML = combo + "x";
 					contagem.innerHTML = pontos;
-					cbFinal = maiorValor(comboMax)
-					comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
+					cbFinal = maiorValor(comboMax);
+					comboM.innerHTML = maiorValor(comboMax) + "x";
 					nota.remove();
 					console.log(nota.style.top);
 					nota.style.top = null;
@@ -265,11 +268,11 @@ window.onload = new function() {
 					} else {
 							pontos += 300;
 					}
-					acertos.innerHTML = "Acertos: " + acc;
-					combos.innerHTML = "Combo: " + combo;
+					acertos.innerHTML = acc;
+					combos.innerHTML = combo + "x";
 					contagem.innerHTML = pontos;
 					cbFinal = maiorValor(comboMax)
-					comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
+					comboM.innerHTML = maiorValor(comboMax) + "x";
 					nota.remove();
 					console.log(nota.style.top);
 					nota.style.top = null;
@@ -279,11 +282,11 @@ window.onload = new function() {
 					comboMax.push(combo);
 					combo = 0;
 					pontos += 75;
-					erros.innerHTML = "Erros: " + err;
-					combos.innerHTML = "Combo: " + combo;
+					erros.innerHTML = err;
+					combos.innerHTML = combo + "x";
 					contagem.innerHTML = pontos;
-					cbFinal = maiorValor(comboMax)
-					comboM.innerHTML = "Combo Max: " + maiorValor(comboMax);
+					cbFinal = maiorValor(comboMax);
+					comboM.innerHTML = maiorValor(comboMax) + "x";
 					nota.remove();
 					console.log(nota.style.top);
 					nota.style.top = null;
