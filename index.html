@@ -16,44 +16,43 @@
 	<!-- Menus de configuração/jogar -->
 	<div id="menu" class="modal">
 		<div class="titulo">
-			<h1>Guitar Strings</h1>
+			<h1>GUITAR STRINGS</h1>
 		</div>
 		<div>
-			<button id="button-play"> Play </button>
-			<button id="button-config"> Configurar </button>
+			<button id="button-play"> JOGAR </button>
+			<button id="button-config"> CONFIGURAÇÕES </button>
 			<button id="check"> Check </button>
 		</div>
 	</div>
 	<div id="menu-config" class="modal">
 		<div class="titulo">
-			<h1>Configurações</h1>
+			<h1>CONFIGURAÇÕES</h1>
 		</div>
 		<div>
-			<section class="conteudo">
+			<section class="conteudo mx-auto w-50">
 				<p style="display: none;"> Selecione a plataforma:
 					<select id="plataforma">
 						<option id="desktopOption" value="desktop">Desktop</option>
 						<option id="mobileOption" value="mobile">Mobile</option>
 					</select>
 				</p>
-				<p> Selecione a música:
+				<p> SELECIONAR MÚSICA:
 					<select id="musica">
-						<option value="msc/music1.mp3">GHOSTEMANE - Mercury</option>
-						<option value="msc/music2.mp3">cYsmix - Classic Pursuit</option>
+						<option value="msc/music1.mp3">cYsmix - Classic Pursuit</option>
 					</select>
 				</p>
-				<p> Números:
+				<p> SELECIONAR MODO:
 					<select id="modo">
 						<option value="par">Pares</option>
 						<option value="impar">Ímpares</option>
 						<option value="primo">Primos</option>
 					</select>
 				</p>
-				<p> Volume:
-					<input type="range" id="volume" min="0" max="100" value="04">
-					<button id="btn-music"> Tocar </button>
+				<p style="text-align: center;"> VOLUME DA MÚSICA:
+					<input type="range" id="volume" min="0" max="100" value="04" class="form-range">
+					<button id="btn-music"> TESTAR </button>
 				</p>
-				<button id="button-back" style="margin-left: 50%;"> Voltar </button>
+				<button id="button-back"> VOLTAR </button>
 			</section>
 		</div>
 	</div>
@@ -98,10 +97,10 @@
 			<div class="col-3 notes" id="noteMove4"></div>
 		</div>
 		<div id="path-buttons" class="row buttons">
-			<div class="col-3 keys" id="key1"></div>
-			<div class="col-3 keys" id="key2"></div>
-			<div class="col-3 keys" id="key3"></div>
-			<div class="col-3 keys" id="key4"></div>
+			<div class="col-3 keys" id="key1"><p class="ajuda">D</p></div>
+			<div class="col-3 keys" id="key2"><p class="ajuda">F</p></div>
+			<div class="col-3 keys" id="key3"><p class="ajuda">J</p></div>
+			<div class="col-3 keys" id="key4"><p class="ajuda">K</p></div>
 		</div>
 	</div>
 
