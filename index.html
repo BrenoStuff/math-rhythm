@@ -15,6 +15,9 @@
 <body>
 	<!-- Menus de configuração/jogar -->
 	<div id="menu" class="modal">
+		<div class="titulo">
+			<h1>Guitar Strings</h1>
+		</div>
 		<div>
 			<button id="button-play"> Play </button>
 			<button id="button-config"> Configurar </button>
@@ -22,31 +25,36 @@
 		</div>
 	</div>
 	<div id="menu-config" class="modal">
+		<div class="titulo">
+			<h1>Configurações</h1>
+		</div>
 		<div>
-			<p> Selecione a plataforma:
-				<select id="plataforma">
-					<option id="desktopOption" value="desktop">Desktop</option>
-					<option id="mobileOption" value="mobile">Mobile</option>
-				</select>
-			</p>
-			<p> Selecione a música:
-				<select id="musica">
-					<option value="msc/music1.mp3">GHOSTEMANE - Mercury</option>
-					<option value="msc/music2.mp3">cYsmix - Classic Pursuit</option>
-				</select>
-			</p>
-			<p> Números:
-				<select id="modo">
-					<option value="par">Pares</option>
-					<option value="impar">Ímpares</option>
-					<option value="primo">Primos</option>
-				</select>
-			</p>
-			<p> Volume:
-				<input type="range" id="volume" min="0" max="100" value="50">
-				<button id="btn-music"> Tocar </button>
-			</p>
-			<button id="button-back"> Voltar </button>
+			<section class="conteudo">
+				<p style="display: none;"> Selecione a plataforma:
+					<select id="plataforma">
+						<option id="desktopOption" value="desktop">Desktop</option>
+						<option id="mobileOption" value="mobile">Mobile</option>
+					</select>
+				</p>
+				<p> Selecione a música:
+					<select id="musica">
+						<option value="msc/music1.mp3">GHOSTEMANE - Mercury</option>
+						<option value="msc/music2.mp3">cYsmix - Classic Pursuit</option>
+					</select>
+				</p>
+				<p> Números:
+					<select id="modo">
+						<option value="par">Pares</option>
+						<option value="impar">Ímpares</option>
+						<option value="primo">Primos</option>
+					</select>
+				</p>
+				<p> Volume:
+					<input type="range" id="volume" min="0" max="100" value="04">
+					<button id="btn-music"> Tocar </button>
+				</p>
+				<button id="button-back" style="margin-left: 50%;"> Voltar </button>
+			</section>
 		</div>
 	</div>
 

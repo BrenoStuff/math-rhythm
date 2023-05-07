@@ -112,64 +112,71 @@ body {
 	border-radius: 30px;
 }
 
-#menu {
+.modal {
+	color: rgb(27, 27, 27);
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	width: 100%;
 	height: 100%;
 	display: flex;
-	align-items: end;
-	justify-content: start;
-	background-image: url('../img/menu.jpg');
+	flex-direction: column;
+	background-color: #9c009f;
 	background-size: 100% 100%;
 }
 
-#menu div {
-	width: 20%;
-	height: 40%;
-	margin: 10vh;
+.modal div {
+	width: 100%;
+	height: 50%;
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	padding: 10px;
 }
 
-#menu div button {
-	width: 100%;
+.titulo {
+	color: white;
+	justify-content: end;
+}
+
+.conteudo {
+	justify-content: start;
+	background-color: white;
+	border-radius: 20px;
+	height: 80%;
+	width: 80%;
+	padding: 20px;
+}
+
+
+#menu button {
+	width: 30%;
 	height: 10vh;
-	border-radius: 25px;
+	margin: 1vh;
+	border-radius: 50px;
 	border: none;
 	background-color: white;
 }
 
-#menu div button:hover {
-	background-color: #8B66D4;
+#menu button:hover {
+	background-color: #a8a8a8;
 }
 
 #menu-config {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 100%;
 	display: none;
-	align-items: center;
-	justify-content: center;
-	background-image: url('../img/menu-config.png');
-	background-size: 100% 100%;
 }
 
-#button-back {
-	width: 100%;
+#menu-config button {
+	width: 30%;
 	height: 10vh;
-	border-radius: 25px;
+	margin: 1vh;
+	border-radius: 50px;
 	border: none;
-	background-color: white;
+	background-color: rgb(224, 224, 224);
 }
 
-#button-back:hover {
-	background-color: #8B66D4;
+#menu-config button:hover {
+	background-color: #b8b8b8;
 }
 
 #score {
