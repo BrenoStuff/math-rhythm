@@ -5,59 +5,35 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"> 
 	<link rel="stylesheet" type="text/css" href="../css/finalScore.css">
 	<link rel="shortcut icon" href="../img/guitar.ico">
 	<title>Guitar Strings</title>
 </head>
 <body>
-	<div class="row container-fluid">
-		<div class="container-fluid col-md-6 pontuacaoFinal mt-2">
-			<div class="row pontos mt-5">
-				<div class = "col-md-6">
-					<p>Pontuação</p>
-				</div>
-				<div class="col-md-6">
-					<p id="pontuacao"></p>
-				</div>
+	
+	<div class="row-fluid">
+		<h1 class="text-center">RESULTADO</h1>
+		<div class="resultados container col-md-12 mx-auto w-75">
+			<div class="exibir container w-25 d-inline-block">
+				<p>Pontuação:</p>
+				<p id="pontuacao" class="info"></p>
+				<p>Acertos:</p>
+				<p id="acertos" class="info"></p>
+				<p>Erros:</p>
+				<p id="erros" class="info"></p>
+				<p>Combo Máx:</p>
+				<p id="comboMax" class="info"></p>
 			</div>
-			<div class="row pontos mt-5">
-				<div class = "col-md-6">
-						<p>Acertos</p>
-				</div>
-				<div class="col-md-6">
-						<p id="acertos"></p>
-				</div>
+			<div class="pct container w-50 d-inline-block">
+				<p id="porcentagem"></p>
+				<p id="letras">SS</p>
+				<a href="../index.html">Voltar ao menu principal</a>
 			</div>
-			<div class="row pontos mt-5">
-				<div class = "col-md-6">
-					<p>Erros</p>
-				</div>
-				<div class="col-md-6">
-					<p id="erros"></p>
-				</div>
-			</div>
-			<div class="row pontos mt-5">
-				<div class = "col-md-6">
-						<p>Combo Máx</p>
-				</div>
-				<div class="col-md-6">
-					<p id="comboMax"></p>
-				</div>
-			</div>
-		</div>
-		<div class="container-fluid col-md-6 imgPTS mt-5">
-			<h1>Aqui vai ficar uma imagem de acordo com a pontuação da pessoa, EX: S, A, B, C</h1>
 		</div>
 	</div>
-	<div class="row container-fluid navegar">
-		<div class="container-fluid col-md-12 d-flex justify-content-center mt-5">
-			
-			<button class = "btn btn-success botoes" onclick="window.location.href='../index.html'">
-				Voltar ao Menu principal
-			</button>
-		</div>
-	</div>
-
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 	<script src="../js/finalScore.js"></script>
 </body>

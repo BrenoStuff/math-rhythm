@@ -36,12 +36,33 @@ for (i = 0; i <= pontuacoes.length - 1; i++) {
 	}
 }
 
+
+var total = parseInt(acc) + parseInt(err);
+var pct = (acc * 100) / total;
+console.log(total);
+console.log(pct);
+
+var letra = document.getElementById("letras");
 var pontos = document.getElementById("pontuacao");
 var acertos = document.getElementById("acertos");
 var erros = document.getElementById("erros");
 var combo = document.getElementById("comboMax");
+var porcentagem = document.getElementById("porcentagem");
+
+if (pct == 100){
+	letra.innerHTML = "SS";
+} else if (pct >= 95 && pct < 100) {
+	letra.innerHTML = "S";
+} else if (pct >= 90 && pct < 95) {
+	letra.innerHTML = "A";
+} else if (pct >= 80 && pct < 90){
+	letra.innerHTML = "B";
+} else if (pct < 80){
+	letra.innerHTML = "C";
+}
 
 pontos.innerHTML = pts;
 acertos.innerHTML = acc;
 erros.innerHTML = err;
-combo.innerHTML = cbs;
+combo.innerHTML = cbs + "x";
+porcentagem.innerHTML = pct.toFixed(2) + "% de acertos";

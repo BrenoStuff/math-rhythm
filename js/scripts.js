@@ -9,6 +9,7 @@ window.onload = new function() {
 	var mapDiv = document.getElementById('map');
 	var scoreboard = document.getElementById("scoreboard"); 
 	var som = document.getElementById("audio");
+	
 	var iniciar = 0;
 	var desespero = [1, 2];
 
