@@ -99,9 +99,11 @@ window.onload = new function() {
 			// hud.style.width = '20%';
 			// });
 			
-			var tamanhoTela = window.innerHeight;
-			document.getElementById("path").style.height = (tamanhoTela / 100 * 90.9) + "px";
-			document.getElementById("path-buttons").style.height = (tamanhoTela / 100 * 9.1) + "px";
+			var tamanhoTela = window.innerHeight
+			document.getElementById("path").style.height = (tamanhoTela / 100 * 90.9) + "px"
+			document.getElementById("path-buttons").style.height = (tamanhoTela / 100 * 9.1) + "px"
+			document.getElementById("comboDiv").classList.remove("container")
+			document.getElementById("comboDiv").style.display = "none"
 			scoreboard.classList.remove("score")
 			scoreboard.classList.remove("container")
 			scoreboard.style.display = "none"
@@ -145,6 +147,9 @@ window.onload = new function() {
 			scoreboard.classList.add("score")
 			scoreboard.classList.add("container")
 			scoreboard.style.display = null
+
+			document.getElementById("comboDiv").classList.add("container")
+			document.getElementById("comboDiv").style.display = null
 		}
 	}
 
