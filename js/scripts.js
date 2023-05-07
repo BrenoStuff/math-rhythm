@@ -84,6 +84,13 @@ window.onload = new function() {
 		som.volume = volume;
 	}
 
+	// Check if it's mobile //
+	const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	if (isMobile) {
+		plataform = "mobile";
+		document.getElementById("mobile").selected = true;
+	}
+
 	// Adaptação para Mobile
 	var setupPlataform = function() {
 		if (plataform === "mobile") {
@@ -91,8 +98,7 @@ window.onload = new function() {
 			// huds.forEach(hud => {
 			// hud.style.width = '20%';
 			// });
-
-			document.getElementById("teclasInfo").remove()
+			
 			var tamanhoTela = window.innerHeight;
 			document.getElementById("path").style.height = (tamanhoTela / 100 * 90.9) + "px";
 			document.getElementById("path-buttons").style.height = (tamanhoTela / 100 * 9.1) + "px";
