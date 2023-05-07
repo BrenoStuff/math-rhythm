@@ -60,8 +60,9 @@ window.onload = new function() {
 			if (contador % 2 != 0){
 				var teste = [];
 				var piano = document.getElementById("noteMove" + i);
-				newNote.innerHTML = contador + "";
 				piano.appendChild(newNote);
+				newNote.appendChild(txt);
+				txt.innerHTML = contador;
 				teste.push(newNote, i);
 				notas.push(teste);
 			}
@@ -69,8 +70,9 @@ window.onload = new function() {
 			const randomPrimo = Math.floor(Math.random() * array_primo.length);
 			var teste = [];
 			var piano = document.getElementById("noteMove" + i);
-			newNote.innerHTML = array_primo[randomPrimo] + "";
 			piano.appendChild(newNote);
+			newNote.appendChild(txt);
+			txt.innerHTML = array_primo[randomPrimo];
 			teste.push(newNote, i);
 			notas.push(teste);
 		}
