@@ -88,7 +88,7 @@ window.onload = new function() {
 	const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 	if (isMobile) {
 		plataform = "mobile";
-		document.getElementById("mobile").selected = true;
+		document.getElementById("mobileOption").selected = true;
 	}
 
 	// Adaptação para Mobile
