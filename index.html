@@ -49,6 +49,17 @@
 						<option value="primo">Primos</option>
 					</select>
 				</p>
+				<p id="alterar-teclas"> ALTERAR TECLAS:
+					<script type="text/javascript">
+						function validate(input){
+						  input.value = input.value.replace(/\W|\d/g, '').substr(0, 1).toUpperCase()
+						}
+					</script>
+					<input class="teclas-config" type="text" id="tecla1" name="tecla1" placeholder="D" onkeyup="validate(this)">
+					<input class="teclas-config" type="text" id="tecla2" name="tecla2" placeholder="F" onkeyup="validate(this)">
+					<input class="teclas-config" type="text" id="tecla3" name="tecla3" placeholder="J" onkeyup="validate(this)">
+					<input class="teclas-config" type="text" id="tecla4" name="tecla4" placeholder="K" onkeyup="validate(this)">
+				</p>
 				<p style="text-align: center;"> VOLUME DA MÚSICA:
 					<input type="range" id="volume" min="0" max="100" value="04" class="form-range">
 					<button id="btn-music"> TESTAR </button>
@@ -98,10 +109,10 @@
 			<div class="col-3 notes" id="noteMove4"></div>
 		</div>
 		<div id="path-buttons" class="row buttons">
-			<div class="col-3 keys" id="key1"><p class="ajuda">D</p></div>
-			<div class="col-3 keys" id="key2"><p class="ajuda">F</p></div>
-			<div class="col-3 keys" id="key3"><p class="ajuda">J</p></div>
-			<div class="col-3 keys" id="key4"><p class="ajuda">K</p></div>
+			<div class="col-3 keys" id="key1"><p id="ajuda-key1" class="ajuda">D</p></div>
+			<div class="col-3 keys" id="key2"><p id="ajuda-key2" class="ajuda">F</p></div>
+			<div class="col-3 keys" id="key3"><p id="ajuda-key3" class="ajuda">J</p></div>
+			<div class="col-3 keys" id="key4"><p id="ajuda-key4" class="ajuda">K</p></div>
 		</div>
 	</div>
 

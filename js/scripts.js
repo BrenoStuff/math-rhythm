@@ -9,6 +9,11 @@ window.onload = new function() {
 	var mapDiv = document.getElementById('map');
 	var scoreboard = document.getElementById("scoreboard"); 
 	var som = document.getElementById("audio");
+
+	var tecla1 = "D";
+	var tecla2 = "F";
+	var tecla3 = "J";
+	var tecla4 = "K";
 	
 	var iniciar = 0;
 	var desespero = [1, 2];
@@ -107,6 +112,7 @@ window.onload = new function() {
 			document.getElementById("path-buttons").style.height = (tamanhoTela / 100 * 9.1) + "px"
 			document.getElementById("comboDiv").classList.remove("container")
 			document.getElementById("comboDiv").style.display = "none"
+			document.getElementById("alterar-teclas").remove();
 			scoreboard.classList.remove("score")
 			scoreboard.classList.remove("container")
 			scoreboard.style.display = "none"
@@ -158,21 +164,21 @@ window.onload = new function() {
 
 	document.addEventListener("keydown", (e) => {
 		if (!e.repeat) {
-			if (e.key === "D" || e.key === "d") {
+			if (e.key === tecla1.toUpperCase() || e.key === tecla1.toLowerCase()) {
 				btt = 1;
+				console.log("Tecla " + tecla1 + " pressionada!");
 				key1.style.backgroundColor = "#9c009f";
-				console.log("Tecla D pressionada!");
-			} else if (e.key === "F" || e.key === "f") {
+			} else if (e.key === tecla2.toUpperCase() || e.key === tecla2.toLowerCase()) {
 				btt = 2;
-				console.log("Tecla F pressionada!");
+				console.log("Tecla " + tecla2 + " pressionada!");
 				key2.style.backgroundColor = "#9c009f";
-			} else if (e.key === "J" || e.key === "j") {
+			} else if (e.key === tecla3.toUpperCase() || e.key === tecla3.toLowerCase()) {
 				btt = 3;
-				console.log("Tecla J pressionada!");
+				console.log("Tecla " + tecla3 + " pressionada!");
 				key3.style.backgroundColor = "#9c009f";
-			} else if (e.key === "K" || e.key === "k") {
+			} else if (e.key === tecla4.toUpperCase() || e.key === tecla4.toLowerCase()) {
 				btt = 4;
-				console.log("Tecla K pressionada!");
+				console.log("Tecla " + tecla4 + " pressionada!");
 				key4.style.backgroundColor = "#9c009f";
 			}
 		} else {
@@ -181,21 +187,21 @@ window.onload = new function() {
 	});
 
 	document.addEventListener("keyup", (e) => {
-		if (e.key === "D" || e.key === "d") {
+		if (e.key === tecla1.toUpperCase() || e.key === tecla1.toLowerCase()) {
 			btt = 0;
-			console.log("Tecla D pressionada!");
+			console.log("Tecla " + tecla1 + " despressionada!");
 			key1.style.backgroundColor = "white";
-		} else if (e.key === "F" || e.key === "f") {
+		} else if (e.key === tecla2.toUpperCase() || e.key === tecla2.toLowerCase()) {
 			btt = 0;
-			console.log("Tecla F pressionada!");
+			console.log("Tecla " + tecla2 + " despressionada!");
 			key2.style.backgroundColor = "white";
-		} else if (e.key === "J" || e.key === "j") {
+		} else if (e.key === tecla3.toUpperCase() || e.key === tecla3.toLowerCase()) {
 			btt = 0;
-			console.log("Tecla J pressionada!");
+			console.log("Tecla " + tecla3 + " despressionada!");
 			key3.style.backgroundColor = "white";
-		} else if (e.key === "K" || e.key === "k") {
+		} else if (e.key === tecla4.toUpperCase() || e.key === tecla4.toLowerCase()) {
 			btt = 0;
-			console.log("Tecla K pressionada!");
+			console.log("Tecla " + tecla4 + " despressionada!");
 			key4.style.backgroundColor = "white";
 		}
 	});
@@ -230,11 +236,30 @@ window.onload = new function() {
 		music = document.querySelector('#musica').value
 		gamemode = document.querySelector('#modo').value
 		volume = document.querySelector('#volume').value / 100
+
+		// Setando teclas de jogo
+		if (document.getElementById("tecla1").value != "") {
+			tecla1 = document.getElementById("tecla1").value
+			document.getElementById("ajuda-key1").innerHTML = tecla1
+		}
+		if (document.getElementById("tecla2").value != "") {
+			tecla2 = document.getElementById("tecla2").value
+			document.getElementById("ajuda-key2").innerHTML = tecla2
+		}
+		if (document.getElementById("tecla3").value != "") {
+			tecla3 = document.getElementById("tecla3").value
+			document.getElementById("ajuda-key3").innerHTML = tecla3
+		}
+		if (document.getElementById("tecla4").value != "") {
+			tecla4 = document.getElementById("tecla4").value
+			document.getElementById("ajuda-key4").innerHTML = tecla4
+
+		}
     });
 
 	// Botão check geral
 	document.getElementById("check").addEventListener("click", function() {
-		alert('Plataforma: ' + plataform + '\rMúsica: ' + music + '\rModo: ' + gamemode + '\rVolume: ' + volume + '\rAltura da tela: ' + mapDiv.offsetHeight + 'px');
+		alert('Plataforma: ' + plataform + '\rMúsica: ' + music + '\rModo: ' + gamemode + '\rVolume: ' + volume + '\rAltura da tela: ' + mapDiv.offsetHeight + 'px' + '\rTecla1: ' + tecla1 + '\rTecla2: ' + tecla2 + '\rTecla3: ' + tecla3 + '\rTecla4: ' + tecla4);
 	});
 	
 	// Botão de checar audio

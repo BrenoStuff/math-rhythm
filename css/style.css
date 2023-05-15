@@ -6,6 +6,10 @@
 	--cor5: #76B7F6;
 }
 
+::placeholder {
+	text-decoration: underline;
+}
+
 body {
 	font-family: 'Inter', sans-serif;
 	padding: 0px;
@@ -254,21 +258,32 @@ select {
 	width: 10px;
 	border-radius: 10px;
 	background-color: #9c009f;
-  }
+}
   
-  /* Estilo do polegar do controle deslizante */
-  .form-range::-webkit-slider-thumb {
-	width: 16px;
-	height: 16px;
-	border-radius: 50%;
-	background-color: #9c009f;
-	border: none;
-	-webkit-appearance: none;
-	margin-top: -4px;
-  }
+/* Estilo do polegar do controle deslizante */
+.form-range::-webkit-slider-thumb {
+width: 16px;
+height: 16px;
+border-radius: 50%;
+background-color: #9c009f;
+border: none;
+-webkit-appearance: none;
+margin-top: -4px;
+}
 
-  select:hover {
-	background-color: rgb(173, 173, 173);
-	cursor: pointer;
-  }
+select:hover {
+background-color: rgb(173, 173, 173);
+cursor: pointer;
+}
+
+.teclas-config {
+	margin-left: 10px;
+	font-weight: 900;
+	width: 70px;
+	text-align: center;
+	border: none;
+	border-radius: 20px;
+	padding: 10px;
+	background-color:rgb(224, 224, 224);
+}
   
