@@ -352,7 +352,6 @@ window.onload = new function() {
 							clearInterval(descer);
 							console.log(pause);
 							console.log("ESC pressionado");
-							document.getElementById("menu-pause").style.display = "absolute";
 							pause = true;
 							if (contadorPause % 2 == 0){
 								contadorPause++;
@@ -376,17 +375,6 @@ window.onload = new function() {
 					var criar = setInterval(criarDiv, 500);
 				}
 				// Evento caso queira sair do mapa
-				
-				document.getElementById("button-continue").addEventListener("click", function(){
-					som.play();
-					console.log(pause);
-					console.log("ESC pressionado pela segunda vez");
-					pause = false;
-					if (contadorPause % 2 != 0){
-						contadorPause++;
-						verificaIniciar();
-					}
-				});
 				
 				document.addEventListener("keydown", (e) => {
 					if(!e.repeat){
