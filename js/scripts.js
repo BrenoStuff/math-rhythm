@@ -335,7 +335,7 @@ window.onload = new function() {
 		}
 	}
 	
-	var abudabi = setInterval(verificaIniciar, 1);
+	var abudabi = setInterval(verificaIniciar, 9000);
 
 	function maiorValor(arr) {
 		return Math.max(...arr);
@@ -375,9 +375,5 @@ window.onload = new function() {
 		} else {
 			console.log ("OK");
 		}
-	}
-
-	for (i = 0; i <= desespero.length - 1; i++) {
-		verificaIniciar();
 	}
 }
