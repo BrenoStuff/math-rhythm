@@ -3,6 +3,7 @@ window.onload = new function() {
 	var plataform = "desktop";
 	var music = "msc/music1.mp3";
 	var gamemode = "par";
+	var speed = 1;
 	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
 	var volume = 0.04;
 
@@ -235,6 +236,7 @@ window.onload = new function() {
 		plataform = document.querySelector('#plataforma').value
 		music = document.querySelector('#musica').value
 		gamemode = document.querySelector('#modo').value
+		speed = document.querySelector('#velocidade').value
 		volume = document.querySelector('#volume').value / 100
 
 		// Setando teclas de jogo
@@ -349,7 +351,7 @@ window.onload = new function() {
 			} else {
 				var criar = setInterval(criarDiv, 500);
 			}
-			var descer = setInterval(descerDiv, 5);
+			var descer = setInterval(descerDiv, speed * 5);
 			som.addEventListener("ended", () => {
 				clearInterval(criar);
 				setTimeout(() => {
