@@ -6,10 +6,13 @@ window.onload = new function() {
 	var speed = 1;
 	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
 	var volume = 0.04;
+	const array_textos = ["Visite a pagina de ajuda caso seja a sua primeira vez jogando!", "Isso tudo foi feito em JavaScript.", "Uma variavel abudabi ja fez muita historia.", "O cérebro humano pesa cerca de 1,4 quilos."
+	, "Obrigado por jogar!", "O jogo esta muito dificil ou muito facil? Visite a pagina de configurações!",];
 
 	var mapDiv = document.getElementById('map');
 	var scoreboard = document.getElementById("scoreboard"); 
 	var som = document.getElementById("audio");
+	var textoAleatorio = document.getElementById("texto-aleatorio");
 
 	var tecla1 = "D";
 	var tecla2 = "F";
@@ -85,6 +88,14 @@ window.onload = new function() {
 		}
 		i = 0;
 	}
+
+	// Texto aleatório
+	setInterval(changeText, 1000 * 7)
+	function changeText() {
+		const randomText = Math.floor(Math.random() * array_textos.length);
+		textoAleatorio.innerHTML = array_textos[randomText];
+	}
+
 
 	// Área de configuração
 	var setupConfig = function() {
@@ -227,7 +238,12 @@ window.onload = new function() {
         document.getElementById("menu-config").style.display = "flex";
     });
 
-    // Botão de voltar
+	document.querySelector('#button-ajuda').addEventListener('click', function() {
+        document.getElementById("menu").style.display = "none";
+        document.getElementById("menu-ajuda").style.display = "flex";
+    });
+
+    // Botão de voltar - Menu configurações
     document.querySelector('#button-back').addEventListener('click', function() {
         document.getElementById("menu").style.display = "flex";
         document.getElementById("menu-config").style.display = "none";
@@ -255,9 +271,14 @@ window.onload = new function() {
 		if (document.getElementById("tecla4").value != "") {
 			tecla4 = document.getElementById("tecla4").value
 			document.getElementById("ajuda-key4").innerHTML = tecla4
-
 		}
     });
+
+	// Botão de voltar - Ajuda
+	document.getElementById('#button-back-ajuda').addEventListener('click', function() {
+		document.getElementById("menu").style.display = "flex";
+		document.getElementById("menu-ajuda").style.display = "none";
+	});
 
 	// Botão check geral
 	document.getElementById("check").addEventListener("click", function() {
@@ -337,7 +358,7 @@ window.onload = new function() {
 		}
 	}
 	
-	var abudabi = setInterval(verificaIniciar, 9000);
+	var abudabi = setInterval(verificaIniciar, 1);
 
 	function maiorValor(arr) {
 		return Math.max(...arr);
@@ -364,14 +385,6 @@ window.onload = new function() {
 			document.addEventListener("keydown", (e) => {
 				if (e.key === "Escape") {
 					console.log("Apertou ESC")
-					if (iniciar === 1) {
-						iniciar = 0;
-						som.pause();
-						som.currentTime = 0;
-						document.getElementById("menu").style.display = "flex";
-						clearInterval(criar);
-						abudabi = setInterval(verificaIniciar, 1);
-					}
 				}
 			});
 		} else {
