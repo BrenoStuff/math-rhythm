@@ -343,7 +343,7 @@ window.onload = new function() {
 
 	function verificaIniciar() {
 		if (iniciar == 1) {
-			clearInterval (abudabi);
+			clearInterval(abudabi);
 			if (gamemode != "primo"){
 				var criar = setInterval(criarDiv, 200);
 			} else {
@@ -356,6 +356,21 @@ window.onload = new function() {
 					var pontuacoes = [pontos, acc, err, cbFinal];
 					window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
 				}, 3000);
+			});
+
+			// Evento caso queira sair do mapa
+			document.addEventListener("keydown", (e) => {
+				if (e.key === "Escape") {
+					console.log("Apertou ESC")
+					if (iniciar === 1) {
+						iniciar = 0;
+						som.pause();
+						som.currentTime = 0;
+						document.getElementById("menu").style.display = "flex";
+						clearInterval(criar);
+						abudabi = setInterval(verificaIniciar, 1);
+					}
+				}
 			});
 		} else {
 			console.log ("OK");
