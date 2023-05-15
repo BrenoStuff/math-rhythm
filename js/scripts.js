@@ -17,7 +17,9 @@ window.onload = new function() {
 	var tecla4 = "K";
 	
 	var iniciar = 0;
+	var pause = false;
 	var desespero = [1, 2];
+	var contadorPause = 2;
 
 	var contador = 0;
 	var notas = [];
@@ -167,19 +169,15 @@ window.onload = new function() {
 		if (!e.repeat) {
 			if (e.key === tecla1.toUpperCase() || e.key === tecla1.toLowerCase()) {
 				btt = 1;
-				console.log("Tecla " + tecla1 + " pressionada!");
 				key1.style.backgroundColor = "#9c009f";
 			} else if (e.key === tecla2.toUpperCase() || e.key === tecla2.toLowerCase()) {
 				btt = 2;
-				console.log("Tecla " + tecla2 + " pressionada!");
 				key2.style.backgroundColor = "#9c009f";
 			} else if (e.key === tecla3.toUpperCase() || e.key === tecla3.toLowerCase()) {
 				btt = 3;
-				console.log("Tecla " + tecla3 + " pressionada!");
 				key3.style.backgroundColor = "#9c009f";
 			} else if (e.key === tecla4.toUpperCase() || e.key === tecla4.toLowerCase()) {
 				btt = 4;
-				console.log("Tecla " + tecla4 + " pressionada!");
 				key4.style.backgroundColor = "#9c009f";
 			}
 		} else {
@@ -190,19 +188,15 @@ window.onload = new function() {
 	document.addEventListener("keyup", (e) => {
 		if (e.key === tecla1.toUpperCase() || e.key === tecla1.toLowerCase()) {
 			btt = 0;
-			console.log("Tecla " + tecla1 + " despressionada!");
 			key1.style.backgroundColor = "white";
 		} else if (e.key === tecla2.toUpperCase() || e.key === tecla2.toLowerCase()) {
 			btt = 0;
-			console.log("Tecla " + tecla2 + " despressionada!");
 			key2.style.backgroundColor = "white";
 		} else if (e.key === tecla3.toUpperCase() || e.key === tecla3.toLowerCase()) {
 			btt = 0;
-			console.log("Tecla " + tecla3 + " despressionada!");
 			key3.style.backgroundColor = "white";
 		} else if (e.key === tecla4.toUpperCase() || e.key === tecla4.toLowerCase()) {
 			btt = 0;
-			console.log("Tecla " + tecla4 + " despressionada!");
 			key4.style.backgroundColor = "white";
 		}
 	});
@@ -217,7 +211,7 @@ window.onload = new function() {
 		setTimeout(function() {
 			iniciar = 1;
         	som.play();
-		}, 1000 * 3);
+		}, 3000);
         document.getElementById("menu").style.display = "none";
     });
 
@@ -297,7 +291,6 @@ window.onload = new function() {
 					cbFinal = maiorValor(comboMax);
 					comboM.innerHTML = maiorValor(comboMax) + "x";
 					nota.remove();
-					console.log(nota.style.top);
 					nota.style.top = null;
 					notas.shift();
 				} else if (posY >= posKey.y - 40 && posY < posKey.y + 30 && btt == notas[i][j + 1]) {
@@ -315,7 +308,6 @@ window.onload = new function() {
 					cbFinal = maiorValor(comboMax)
 					comboM.innerHTML = maiorValor(comboMax) + "x";
 					nota.remove();
-					console.log(nota.style.top);
 					nota.style.top = null;
 					notas.shift();
 				} else if (posY >= posKey.y + 30 && btt == 0 || posY >= posKey.y + 30 && btt == notas[i][j + 1]) {
@@ -329,7 +321,6 @@ window.onload = new function() {
 					cbFinal = maiorValor(comboMax);
 					comboM.innerHTML = maiorValor(comboMax) + "x";
 					nota.remove();
-					console.log(nota.style.top);
 					nota.style.top = null;
 					notas.shift();
 				}
@@ -337,7 +328,7 @@ window.onload = new function() {
 		}
 	}
 	
-	var abudabi = setInterval(verificaIniciar, 9000);
+	var abudabi = setInterval(verificaIniciar, 1);
 
 	function maiorValor(arr) {
 		return Math.max(...arr);
@@ -345,37 +336,76 @@ window.onload = new function() {
 
 	function verificaIniciar() {
 		if (iniciar == 1) {
-			clearInterval(abudabi);
-			if (gamemode != "primo"){
-				var criar = setInterval(criarDiv, 200);
-			} else {
-				var criar = setInterval(criarDiv, 500);
-			}
-			var descer = setInterval(descerDiv, speed * 5);
-			som.addEventListener("ended", () => {
-				clearInterval(criar);
-				setTimeout(() => {
-					var pontuacoes = [pontos, acc, err, cbFinal];
-					window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
-				}, 3000);
-			});
-
-			// Evento caso queira sair do mapa
-			document.addEventListener("keydown", (e) => {
-				if (e.key === "Escape") {
-					console.log("Apertou ESC")
-					if (iniciar === 1) {
-						iniciar = 0;
-						som.pause();
-						som.currentTime = 0;
-						document.getElementById("menu").style.display = "flex";
-						clearInterval(criar);
-						abudabi = setInterval(verificaIniciar, 1);
-					}
+			if (pause == false){
+				clearInterval(abudabi);
+				if (gamemode != "primo"){
+					var criar = setInterval(criarDiv, 200);
+				} else {
+					var criar = setInterval(criarDiv, 500);
 				}
-			});
-		} else {
-			console.log ("OK");
+				// Evento caso queira sair do mapa
+				document.addEventListener("keydown", (e) => {
+					if (!e.repeat){
+						if (e.key === "Escape") {
+							som.pause();
+							clearInterval(criar);
+							clearInterval(descer);
+							console.log(pause);
+							console.log("ESC pressionado");
+							document.getElementById("menu-pause").style.display = "absolute";
+							pause = true;
+							if (contadorPause % 2 == 0){
+								contadorPause++;
+								verificaIniciar();
+							}
+						}
+					}
+				});
+				var descer = setInterval(descerDiv, speed * 5);
+				som.addEventListener("ended", () => {
+					clearInterval(criar);
+					setTimeout(() => {
+						var pontuacoes = [pontos, acc, err, cbFinal];
+						window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
+					}, 3000);
+				});
+			}else if (pause == true){
+				if (gamemode != "primo"){
+					var criar = setInterval(criarDiv, 200);
+				} else {
+					var criar = setInterval(criarDiv, 500);
+				}
+				// Evento caso queira sair do mapa
+				
+				document.getElementById("button-continue").addEventListener("click", function(){
+					som.play();
+					console.log(pause);
+					console.log("ESC pressionado pela segunda vez");
+					pause = false;
+					if (contadorPause % 2 != 0){
+						contadorPause++;
+						verificaIniciar();
+					}
+				});
+				
+				document.addEventListener("keydown", (e) => {
+					if(!e.repeat){
+						if (e.key === "L") {
+							som.play();
+							console.log(pause);
+							console.log("ESC pressionado pela segunda vez");
+							pause = false;
+							if (contadorPause % 2 != 0){
+								contadorPause++;
+								verificaIniciar();
+							}
+						}
+					}
+				});
+				var descer = setInterval(descerDiv, speed * 0);
+				clearInterval(criar);
+				clearInterval(descer);
+			}
 		}
 	}
 }
