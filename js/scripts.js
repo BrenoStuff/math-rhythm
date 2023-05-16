@@ -303,6 +303,7 @@ window.onload = new function() {
 		combo = 0;
 
 		som.currentTime = 0;
+		console.log(iniciar)
 
 		document.getElementById("menu").style.display = "flex";
 		document.getElementById("menu-pause").style.display = "none";
@@ -399,14 +400,18 @@ window.onload = new function() {
 				} else {
 					criar = setInterval(criarDiv, 500);
 				}
-				// Evento caso queira sair do mapa
+
+				// Abrir menu de pause
 				document.addEventListener("keydown", (e) => {
 					if (!e.repeat){
+						var isKeyPause = false;
 						if (e.key === "Escape" || e.key === " ") {
+							isKeyPause = true;
+						}
+						if (isKeyPause && iniciar == 1) {
 							som.pause();
 							clearInterval(criar);
 							clearInterval(descer);
-							console.log(pause);
 							console.log("ESC pressionado");
 							document.getElementById("menu-pause").style.display = "flex";
 							pause = true;
