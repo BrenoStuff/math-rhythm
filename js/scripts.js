@@ -272,6 +272,12 @@ window.onload = new function() {
 		}
 	});
 
+	//Botão ir para o menu
+	document.getElementById("button-back-pause").addEventListener("click", function() {
+		document.getElementById("menu").style.display = "flex";
+		document.getElementById("pause").style.display = "none";
+	});
+
 	function descerDiv() {
 		for (i = 0; i <= notas.length; i++) {
 			for (j = 0; j < 1; j++) {
@@ -346,12 +352,13 @@ window.onload = new function() {
 				// Evento caso queira sair do mapa
 				document.addEventListener("keydown", (e) => {
 					if (!e.repeat){
-						if (e.key === "Escape") {
+						if (e.key === "Escape" || e.key === " ") {
 							som.pause();
 							clearInterval(criar);
 							clearInterval(descer);
 							console.log(pause);
 							console.log("ESC pressionado");
+							document.getElementById("menu-pause").style.display = "flex";
 							pause = true;
 							if (contadorPause % 2 == 0){
 								contadorPause++;
@@ -374,22 +381,22 @@ window.onload = new function() {
 				} else {
 					var criar = setInterval(criarDiv, 500);
 				}
-				// Evento caso queira sair do mapa
-				
-				document.addEventListener("keydown", (e) => {
-					if(!e.repeat){
-						if (e.key === "L") {
-							som.play();
-							console.log(pause);
-							console.log("ESC pressionado pela segunda vez");
-							pause = false;
-							if (contadorPause % 2 != 0){
-								contadorPause++;
-								verificaIniciar();
-							}
+
+				// Botão fechar menu de pause
+				document.getElementById("button-continue").addEventListener("click", () => {
+					document.getElementById("menu-pause").style.display = "none";
+					setTimeout(() => {
+						som.play();
+						console.log(pause);
+						console.log("ESC pressionado pela segunda vez");
+						pause = false;
+						if (contadorPause % 2 != 0){
+							contadorPause++;
+							verificaIniciar();
 						}
-					}
+					}, 1500);
 				});
+
 				var descer = setInterval(descerDiv, speed * 0);
 				clearInterval(criar);
 				clearInterval(descer);
