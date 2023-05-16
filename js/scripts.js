@@ -239,9 +239,6 @@ window.onload = new function() {
 
     // Botão de voltar - Menu configurações
     document.querySelector('#button-back').addEventListener('click', function() {
-        document.getElementById("menu").style.display = "flex";
-        document.getElementById("menu-config").style.display = "none";
-
 		// Coisas de configuração
 		plataform = document.querySelector('#plataforma').value
 		music = document.querySelector('#musica').value
@@ -267,6 +264,14 @@ window.onload = new function() {
 			document.getElementById("ajuda-key4").innerHTML = tecla4
 
 		}
+
+		// Checando se tem alguma tecla repetida
+		if (tecla1 === tecla2 || tecla1 === tecla3 || tecla1 === tecla4 || tecla2 === tecla3 || tecla2 === tecla4 || tecla3 === tecla4) {
+			alert("Não pode ter teclas repetidas!")
+		} else {
+			document.getElementById("menu").style.display = "flex";
+        	document.getElementById("menu-config").style.display = "none";
+		}
     });
 
 	// Botão de voltar - Ajuda
@@ -282,14 +287,22 @@ window.onload = new function() {
 		contadorPause = 2;
 
 		contador = 0;
-		notas = [];
 		pontos = 0;
 		comboMax = [];
+
+		notas = [];
+		const notes = document.querySelectorAll('.beat');
+		notes.forEach((note) => {
+			note.remove();
+		});
+		abudabi = setInterval(verificaIniciar, 1);
 
 		btt = 0;
 		err = 0;
 		acc = 0;
 		combo = 0;
+
+		som.currentTime = 0;
 
 		document.getElementById("menu").style.display = "flex";
 		document.getElementById("menu-pause").style.display = "none";
