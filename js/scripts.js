@@ -221,7 +221,13 @@ window.onload = new function() {
         document.getElementById("menu-config").style.display = "flex";
     });
 
-    // Botão de voltar
+	// Botão de ajuda
+	document.getElementById('button-ajuda').addEventListener('click', function() {
+		document.getElementById("menu").style.display = "none";
+		document.getElementById("menu-ajuda").style.display = "flex";
+	});
+
+    // Botão de voltar - Menu configurações
     document.querySelector('#button-back').addEventListener('click', function() {
         document.getElementById("menu").style.display = "flex";
         document.getElementById("menu-config").style.display = "none";
@@ -253,6 +259,18 @@ window.onload = new function() {
 		}
     });
 
+	// Botão de voltar - Ajuda
+	document.getElementById('button-back-ajuda').addEventListener('click', function() {
+		document.getElementById("menu").style.display = "flex";
+		document.getElementById("menu-ajuda").style.display = "none";
+	});
+
+	//Botão de voltar - Pause
+	document.getElementById("button-back-pause").addEventListener("click", function() {
+		document.getElementById("menu").style.display = "flex";
+		document.getElementById("pause").style.display = "none";
+	});
+
 	// Botão check geral
 	document.getElementById("check").addEventListener("click", function() {
 		alert('Plataforma: ' + plataform + '\rMúsica: ' + music + '\rModo: ' + gamemode + '\rVolume: ' + volume + '\rAltura da tela: ' + mapDiv.offsetHeight + 'px' + '\rTecla1: ' + tecla1 + '\rTecla2: ' + tecla2 + '\rTecla3: ' + tecla3 + '\rTecla4: ' + tecla4);
@@ -272,11 +290,6 @@ window.onload = new function() {
 		}
 	});
 
-	//Botão ir para o menu
-	document.getElementById("button-back-pause").addEventListener("click", function() {
-		document.getElementById("menu").style.display = "flex";
-		document.getElementById("pause").style.display = "none";
-	});
 
 	function descerDiv() {
 		for (i = 0; i <= notas.length; i++) {
