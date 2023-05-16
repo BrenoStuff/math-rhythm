@@ -6,10 +6,13 @@ window.onload = new function() {
 	var speed = 1;
 	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
 	var volume = 0.04;
+	const array_textos = ["Visite a pagina de ajuda caso seja a sua primeira vez jogando!", "Isso tudo foi feito em JavaScript.", "Uma variavel abudabi ja fez muita historia.", "O cérebro humano pesa cerca de 1,4 quilos."
+	, "Obrigado por jogar!", "O jogo esta muito dificil ou muito facil? Visite a pagina de configurações!",];
 
 	var mapDiv = document.getElementById('map');
 	var scoreboard = document.getElementById("scoreboard"); 
 	var som = document.getElementById("audio");
+	var textoAleatorio = document.getElementById("texto-aleatorio");
 
 	var tecla1 = "D";
 	var tecla2 = "F";
@@ -17,8 +20,8 @@ window.onload = new function() {
 	var tecla4 = "K";
 	
 	var iniciar = 0;
+	var criar;
 	var pause = false;
-	var desespero = [1, 2];
 	var contadorPause = 2;
 
 	var contador = 0;
@@ -86,6 +89,13 @@ window.onload = new function() {
 			notas.push(teste);
 		}
 		i = 0;
+	}
+
+	// Texto aleatório
+	setInterval(changeText, 1000 * 7)
+	function changeText() {
+		const randomText = Math.floor(Math.random() * array_textos.length);
+		textoAleatorio.innerHTML = array_textos[randomText];
 	}
 
 	// Área de configuração
@@ -267,8 +277,22 @@ window.onload = new function() {
 
 	//Botão de voltar - Pause
 	document.getElementById("button-back-pause").addEventListener("click", function() {
+		iniciar = 0;
+		pause = false;
+		contadorPause = 2;
+
+		contador = 0;
+		notas = [];
+		pontos = 0;
+		comboMax = [];
+
+		btt = 0;
+		err = 0;
+		acc = 0;
+		combo = 0;
+
 		document.getElementById("menu").style.display = "flex";
-		document.getElementById("pause").style.display = "none";
+		document.getElementById("menu-pause").style.display = "none";
 	});
 
 	// Botão check geral
@@ -358,9 +382,9 @@ window.onload = new function() {
 			if (pause == false){
 				clearInterval(abudabi);
 				if (gamemode != "primo"){
-					var criar = setInterval(criarDiv, 200);
+					criar = setInterval(criarDiv, 200);
 				} else {
-					var criar = setInterval(criarDiv, 500);
+					criar = setInterval(criarDiv, 500);
 				}
 				// Evento caso queira sair do mapa
 				document.addEventListener("keydown", (e) => {
@@ -390,9 +414,9 @@ window.onload = new function() {
 				});
 			}else if (pause == true){
 				if (gamemode != "primo"){
-					var criar = setInterval(criarDiv, 200);
+					criar = setInterval(criarDiv, 200);
 				} else {
-					var criar = setInterval(criarDiv, 500);
+					criar = setInterval(criarDiv, 500);
 				}
 
 				// Botão fechar menu de pause
