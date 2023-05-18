@@ -35,6 +35,9 @@ window.onload = new function() {
 	var combo = 0;
 
 	var cbFinal;
+
+	var animacao = document.getElementById("path");
+	var classes = Array.from(animacao.classList);
  
 	// ----------- PODE IGNORAR ESSE TRECHO ---------------- //
 
@@ -290,6 +293,15 @@ window.onload = new function() {
 		pontos = 0;
 		comboMax = [];
 
+		acertos.innerHTML = 0;
+		contagem.innerHTML = 0;
+		erros.innerHTML = 0;
+		combos.innerHTML = 0 + "x";
+		comboM.innerHTML = 0 + "x";
+
+		animacao.classList.remove("path-correct");
+		animacao.classList.remove("path-wrong");
+
 		notas = [];
 		const notes = document.querySelectorAll('.beat');
 		notes.forEach((note) => {
@@ -327,9 +339,6 @@ window.onload = new function() {
 			som.play();
 		}
 	});
-
-	var animacao = document.getElementById("path");
-	var classes = Array.from(animacao.classList);
 
 	function descerDiv() {
 		for (i = 0; i <= notas.length; i++) {
