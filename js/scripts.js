@@ -314,6 +314,8 @@ window.onload = new function() {
 		}
 	});
 
+	var animacao = document.getElementById("path");
+	var classes = Array.from(animacao.classList);
 
 	function descerDiv() {
 		for (i = 0; i <= notas.length; i++) {
@@ -325,6 +327,12 @@ window.onload = new function() {
 
 				if (posY >= posKey.y - 70 && posY < posKey.y - 40 && btt == notas[i][j + 1]) {
 					err = err + 1;
+					console.log(classes);
+					animacao.classList.remove("path-correct");
+					console.log("Classe correct removida");
+					if(classes [0] || classes[1] == "path-correct" || classes[2] == "path-correct"){
+					}
+					animacao.classList.add("path-wrong");
 					comboMax.push(combo);
 					combo = 0;
 					pontos += 150;
@@ -338,6 +346,12 @@ window.onload = new function() {
 					notas.shift();
 				} else if (posY >= posKey.y - 40 && posY < posKey.y + 30 && btt == notas[i][j + 1]) {
 					acc = acc + 1;
+					console.log(classes);
+					animacao.classList.remove("path-wrong");
+					console.log("Classe wrong removida");
+					if(classes [0] || classes[1] == "path-wrong" || classes[2] == "path-wrong"){
+					}
+					animacao.classList.add("path-correct");
 					combo++;
 					comboMax.push(combo);
 					if (combo != 0) {
@@ -355,6 +369,12 @@ window.onload = new function() {
 					notas.shift();
 				} else if (posY >= posKey.y + 30 && btt == 0 || posY >= posKey.y + 30 && btt == notas[i][j + 1]) {
 					err = err + 1;
+					console.log(classes);
+					animacao.classList.remove("path-correct");
+					console.log("Classe correct removida");
+					if(classes [0] || classes[1] == "path-correct" || classes[2] == "path-correct"){
+					}
+					animacao.classList.add("path-wrong");
 					comboMax.push(combo);
 					combo = 0;
 					pontos += 75;
