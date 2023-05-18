@@ -7,7 +7,7 @@ window.onload = new function() {
 	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
 	var volume = 0.04;
 	const array_textos = ["Visite a pagina de ajuda caso seja a sua primeira vez jogando!", "Isso tudo foi feito em JavaScript.", "Uma variavel abudabi ja fez muita historia.", "O cérebro humano pesa cerca de 1,4 quilos."
-	, "Obrigado por jogar!", "O jogo esta muito dificil ou muito facil? Visite a pagina de configurações!",];
+	, "Obrigado por jogar!", "O jogo esta muito dificil ou muito facil? Visite a pagina de configurações!", "O infinito pode ser dividido ao meio, resultando em pares e impares", "O infinito é um numero par ou impar?", "Não existe uma fórmula para gerar números primos"];
 
 	var mapDiv = document.getElementById('map');
 	var scoreboard = document.getElementById("scoreboard"); 
@@ -239,9 +239,6 @@ window.onload = new function() {
 
     // Botão de voltar - Menu configurações
     document.querySelector('#button-back').addEventListener('click', function() {
-        document.getElementById("menu").style.display = "flex";
-        document.getElementById("menu-config").style.display = "none";
-
 		// Coisas de configuração
 		plataform = document.querySelector('#plataforma').value
 		music = document.querySelector('#musica').value
@@ -267,6 +264,14 @@ window.onload = new function() {
 			document.getElementById("ajuda-key4").innerHTML = tecla4
 
 		}
+
+		// Checando se tem alguma tecla repetida
+		if (tecla1 === tecla2 || tecla1 === tecla3 || tecla1 === tecla4 || tecla2 === tecla3 || tecla2 === tecla4 || tecla3 === tecla4) {
+			alert("Não pode ter teclas repetidas!")
+		} else {
+			document.getElementById("menu").style.display = "flex";
+        	document.getElementById("menu-config").style.display = "none";
+		}
     });
 
 	// Botão de voltar - Ajuda
@@ -282,14 +287,23 @@ window.onload = new function() {
 		contadorPause = 2;
 
 		contador = 0;
-		notas = [];
 		pontos = 0;
 		comboMax = [];
+
+		notas = [];
+		const notes = document.querySelectorAll('.beat');
+		notes.forEach((note) => {
+			note.remove();
+		});
+		abudabi = setInterval(verificaIniciar, 1);
 
 		btt = 0;
 		err = 0;
 		acc = 0;
 		combo = 0;
+
+		som.currentTime = 0;
+		console.log(iniciar)
 
 		document.getElementById("menu").style.display = "flex";
 		document.getElementById("menu-pause").style.display = "none";
@@ -406,14 +420,18 @@ window.onload = new function() {
 				} else {
 					criar = setInterval(criarDiv, 500);
 				}
-				// Evento caso queira sair do mapa
+
+				// Abrir menu de pause
 				document.addEventListener("keydown", (e) => {
 					if (!e.repeat){
+						var isKeyPause = false;
 						if (e.key === "Escape" || e.key === " ") {
+							isKeyPause = true;
+						}
+						if (isKeyPause && iniciar == 1) {
 							som.pause();
 							clearInterval(criar);
 							clearInterval(descer);
-							console.log(pause);
 							console.log("ESC pressionado");
 							document.getElementById("menu-pause").style.display = "flex";
 							pause = true;
