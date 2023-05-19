@@ -491,7 +491,11 @@ window.onload = new function() {
 			console.log(contadorV);
 			if (pause == false){
 				clearInterval(abudabi);
-				criar = setInterval(criarDiv, 200);
+				if (gamemode != "primo"){
+					criar = setInterval(criarDiv, 200);
+				} else {
+					criar = setInterval(criarDiv, 500);
+				}
 				// Abrir menu de pause
 				document.addEventListener("keydown", (e) => {
 					if (!e.repeat){
@@ -513,6 +517,7 @@ window.onload = new function() {
 						}
 					}
 				});
+
 				som.addEventListener("ended", () => {
 					clearInterval(criar);
 					setTimeout(() => {
@@ -521,13 +526,21 @@ window.onload = new function() {
 					}, 3000);
 				});
 			}else if (pause == true){
-				criar = setInterval(criarDiv, 200);
+				if (gamemode != "primo"){
+					criar = setInterval(criarDiv, 200);
+				} else {
+					criar = setInterval(criarDiv, 500);
+				}
+
 				// Botão fechar menu de pause
 				document.getElementById("button-continue").addEventListener("click", () => {
 					document.getElementById("menu-pause").style.display = "none";
 					setTimeout(() => {
 						som.play();
+						console.log(pause);
+						console.log("ESC pressionado pela segunda vez");
 						pause = false;
+						descer = setInterval(descerDiv, speed * 5);
 						if (contadorPause % 2 != 0){
 							contadorPause++;
 							verificaIniciar();
@@ -535,7 +548,6 @@ window.onload = new function() {
 					}, 1500);
 				});
 
-				var descer = setInterval(descerDiv, speed * 0);
 				clearInterval(criar);
 				clearInterval(descer);
 			}
