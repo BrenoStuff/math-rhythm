@@ -4,12 +4,11 @@ window.onload = new function() {
 	var music = "msc/music1.mp3";
 	var gamemode = "par";
 	var speed = 1;
-	var descer = setInterval(descerDiv, speed * 5);
+	var descer;
 	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
-	var volume = 0.00;
+	var volume = 0.05;
 	const array_textos = ["Visite a pagina de ajuda caso seja a sua primeira vez jogando!", "Isso tudo foi feito em JavaScript.", "Uma variavel abudabi ja fez muita historia.", "O cérebro humano pesa cerca de 1,4 quilos."
 	, "Obrigado por jogar!", "O jogo esta muito dificil ou muito facil? Visite a pagina de configurações!", "O infinito pode ser dividido ao meio, resultando em pares e impares", "O infinito é um numero par ou impar?", "Não existe uma fórmula para gerar números primos"];
-	const array_perguntas = [["X + 1 = 3, qual o valor de x","3"],["Biscoito ou Bolacha","Cookie"]];
 
 	var mapDiv = document.getElementById('map');
 	var scoreboard = document.getElementById("scoreboard"); 
@@ -331,6 +330,7 @@ window.onload = new function() {
 		err = 0;
 		acc = 0;
 		combo = 0;
+		contadorV = 10;
 
 		som.currentTime = 0;
 
@@ -538,6 +538,9 @@ window.onload = new function() {
 						}
 					}
 				});
+
+				clearInterval(descer)
+				descer = setInterval(descerDiv, speed * 5);
 
 				som.addEventListener("ended", () => {
 					clearInterval(criar);
