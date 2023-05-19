@@ -36,6 +36,7 @@ window.onload = new function() {
 	var err = 0;
 	var acc = 0;
 	var combo = 0;
+	var resposta;
 
 	var cbFinal;
 
@@ -452,22 +453,20 @@ window.onload = new function() {
 	function verificaVida() {
 		if (contadorV <= 0) {
 			clearInterval(gamePause);
-			pause = true;
-			var isKeyPause = true;
-			if (isKeyPause && iniciar == 1) {
-				som.pause();
-				clearInterval(criar);
-				clearInterval(descer);
-				document.getElementById("menu-quest").style.display = "flex";
-				geraPergunta();
-			}
+			som.pause();
+
+			clearInterval(criar);
+			clearInterval(descer);
+			
+			document.getElementById("menu-quest").style.display = "flex";
+			geraPergunta();
 		}
 	}
 
 	function geraPergunta() {
 		var sinal = Math.floor(Math.random() * 2) + 1;
 		var razao = Math.floor(Math.random() * 9) + 1;
-		var elemento = Math.floor(Math.random() * 9) + 1;
+		var elemento = Math.floor(Math.random() * 15) + 4;
 		
 		var primeiroNumero = Math.floor(Math.random() * 100) + 1;
 		var segundoNumero = 0;
@@ -482,13 +481,35 @@ window.onload = new function() {
 			segundoNumero = primeiroNumero + razao;
 			terceiroNumero = segundoNumero + razao;
 		}
+
+		resposta = primeiroNumero + (elemento - 1) * razao
 		
-		document.getElementById("pergunta-random").innerHTML = "Dada a sequência ( " + primeiroNumero + ", " + segundoNumero + ", " + terceiroNumero + " ... ) em que a razão é igual a " + razao + ". Qual a posição do " + elemento + "º elemento?";
+		document.getElementById("pergunta-random").innerHTML = "Dada a sequência ( " + primeiroNumero + ", " + segundoNumero + ", " + terceiroNumero + " ... ) em que a razão é igual a " + razao + ". Qual é o " + elemento + "º número?";
 	}
+
+	document.getElementById("button-addon2").addEventListener("click", () => {
+		if (resposta == document.getElementById("resposta").value){
+			document.getElementById("menu-quest").style.display = "none";
+			contadorV = 10;
+
+			setTimeout(() => {
+				gamePause = setInterval(verificaVida, 1);
+				som.play();
+				if (gamemode != "primo"){
+					criar = setInterval(criarDiv, 200);
+				} else {
+					criar = setInterval(criarDiv, 500);
+				}
+				barraDeVida.style.width = 400 + "px";
+				descer = setInterval(descerDiv, speed * 5)
+			}, 1500);
+		} else {
+			alert('burro');
+		}
+	})
 
 	function verificaIniciar() {
 		if (iniciar == 1) {
-			console.log(contadorV);
 			if (pause == false){
 				clearInterval(abudabi);
 				if (gamemode != "primo"){
@@ -525,7 +546,7 @@ window.onload = new function() {
 						window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
 					}, 3000);
 				});
-			}else if (pause == true){
+			} else if (pause == true){
 				if (gamemode != "primo"){
 					criar = setInterval(criarDiv, 200);
 				} else {
@@ -537,9 +558,8 @@ window.onload = new function() {
 					document.getElementById("menu-pause").style.display = "none";
 					setTimeout(() => {
 						som.play();
-						console.log(pause);
-						console.log("ESC pressionado pela segunda vez");
 						pause = false;
+						clearInterval(descer);
 						descer = setInterval(descerDiv, speed * 5);
 						if (contadorPause % 2 != 0){
 							contadorPause++;
