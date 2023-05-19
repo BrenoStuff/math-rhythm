@@ -4,8 +4,9 @@ window.onload = new function() {
 	var music = "msc/music1.mp3";
 	var gamemode = "par";
 	var speed = 1;
+	var descer = setInterval(descerDiv, speed * 5);
 	const array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
-	var volume = 0.04;
+	var volume = 0.00;
 	const array_textos = ["Visite a pagina de ajuda caso seja a sua primeira vez jogando!", "Isso tudo foi feito em JavaScript.", "Uma variavel abudabi ja fez muita historia.", "O cérebro humano pesa cerca de 1,4 quilos."
 	, "Obrigado por jogar!", "O jogo esta muito dificil ou muito facil? Visite a pagina de configurações!", "O infinito pode ser dividido ao meio, resultando em pares e impares", "O infinito é um numero par ou impar?", "Não existe uma fórmula para gerar números primos"];
 
@@ -25,6 +26,7 @@ window.onload = new function() {
 	var contadorPause = 2;
 
 	var contador = 0;
+	var contadorV = 10;
 	var notas = [];
 	var pontos = 0;
 	var comboMax = [];
@@ -46,6 +48,7 @@ window.onload = new function() {
 
 	// ----------------------------------------------------- //
 
+	var barraDeVida = document.getElementById("lifebar");
 	var acertos = document.getElementById("acertos");
 	var contagem = document.getElementById("contagem");
 	var erros = document.getElementById("erros");
@@ -177,6 +180,9 @@ window.onload = new function() {
 			document.getElementById("comboDiv").style.display = null
 		}
 	}
+
+	//Importante
+	var incrementoDecremento = 400;
 
 	document.addEventListener("keydown", (e) => {
 		if (!e.repeat) {
@@ -315,7 +321,6 @@ window.onload = new function() {
 		combo = 0;
 
 		som.currentTime = 0;
-		console.log(iniciar)
 
 		document.getElementById("menu").style.display = "flex";
 		document.getElementById("menu-pause").style.display = "none";
@@ -350,11 +355,14 @@ window.onload = new function() {
 
 				if (posY >= posKey.y - 70 && posY < posKey.y - 40 && btt == notas[i][j + 1]) {
 					err = err + 1;
-					console.log(classes);
-					animacao.classList.remove("path-correct");
-					console.log("Classe correct removida");
-					if(classes [0] || classes[1] == "path-correct" || classes[2] == "path-correct"){
+					if (contadorV >= 0){
+						contadorV--;
+					} else if (contadorV < 0){
+						contadorV = 0;
 					}
+					incrementoDecremento -= 40;
+					barraDeVida.style.width = incrementoDecremento + "px";
+					animacao.classList.remove("path-correct");
 					animacao.classList.add("path-wrong");
 					comboMax.push(combo);
 					combo = 0;
@@ -369,11 +377,16 @@ window.onload = new function() {
 					notas.shift();
 				} else if (posY >= posKey.y - 40 && posY < posKey.y + 30 && btt == notas[i][j + 1]) {
 					acc = acc + 1;
-					console.log(classes);
-					animacao.classList.remove("path-wrong");
-					console.log("Classe wrong removida");
-					if(classes [0] || classes[1] == "path-wrong" || classes[2] == "path-wrong"){
+					if (contadorV <= 10){
+						contadorV++;
+						if (parseInt(barraDeVida.style.width) + 40 < 400){
+							incrementoDecremento += 40;
+							barraDeVida.style.width = incrementoDecremento + "px";
+						}
+					} else if (contadorV > 10){
+						contadorV = 10;
 					}
+					animacao.classList.remove("path-wrong");
 					animacao.classList.add("path-correct");
 					combo++;
 					comboMax.push(combo);
@@ -392,11 +405,14 @@ window.onload = new function() {
 					notas.shift();
 				} else if (posY >= posKey.y + 30 && btt == 0 || posY >= posKey.y + 30 && btt == notas[i][j + 1]) {
 					err = err + 1;
-					console.log(classes);
-					animacao.classList.remove("path-correct");
-					console.log("Classe correct removida");
-					if(classes [0] || classes[1] == "path-correct" || classes[2] == "path-correct"){
+					if (contadorV >= 0){
+						contadorV--;
+					} else if (contadorV < 0){
+						contadorV = 0;
 					}
+					incrementoDecremento -= 40;
+					barraDeVida.style.width = incrementoDecremento + "px";
+					animacao.classList.remove("path-correct");
 					animacao.classList.add("path-wrong");
 					comboMax.push(combo);
 					combo = 0;
@@ -420,19 +436,32 @@ window.onload = new function() {
 		return Math.max(...arr);
 	}
 
+	var gamePause = setInterval(verificaVida, 1);
+
+	function verificaVida() {
+		if (contadorV <= 0) {
+			clearInterval(gamePause);
+			pause = true;
+			var isKeyPause = true;
+			if (isKeyPause && iniciar == 1) {
+				som.pause();
+				clearInterval(criar);
+				clearInterval(descer);
+				document.getElementById("menu-pause").style.display = "flex";
+			}
+			}
+		}
+
 	function verificaIniciar() {
 		if (iniciar == 1) {
+			console.log(contadorV);
 			if (pause == false){
 				clearInterval(abudabi);
-				if (gamemode != "primo"){
-					criar = setInterval(criarDiv, 200);
-				} else {
-					criar = setInterval(criarDiv, 500);
-				}
-
+				criar = setInterval(criarDiv, 200);
 				// Abrir menu de pause
 				document.addEventListener("keydown", (e) => {
 					if (!e.repeat){
+						//Pause
 						var isKeyPause = false;
 						if (e.key === "Escape" || e.key === " ") {
 							isKeyPause = true;
@@ -441,7 +470,6 @@ window.onload = new function() {
 							som.pause();
 							clearInterval(criar);
 							clearInterval(descer);
-							console.log("ESC pressionado");
 							document.getElementById("menu-pause").style.display = "flex";
 							pause = true;
 							if (contadorPause % 2 == 0){
@@ -451,7 +479,6 @@ window.onload = new function() {
 						}
 					}
 				});
-				var descer = setInterval(descerDiv, speed * 5);
 				som.addEventListener("ended", () => {
 					clearInterval(criar);
 					setTimeout(() => {
@@ -460,19 +487,12 @@ window.onload = new function() {
 					}, 3000);
 				});
 			}else if (pause == true){
-				if (gamemode != "primo"){
-					criar = setInterval(criarDiv, 200);
-				} else {
-					criar = setInterval(criarDiv, 500);
-				}
-
+				criar = setInterval(criarDiv, 200);
 				// Botão fechar menu de pause
 				document.getElementById("button-continue").addEventListener("click", () => {
 					document.getElementById("menu-pause").style.display = "none";
 					setTimeout(() => {
 						som.play();
-						console.log(pause);
-						console.log("ESC pressionado pela segunda vez");
 						pause = false;
 						if (contadorPause % 2 != 0){
 							contadorPause++;
