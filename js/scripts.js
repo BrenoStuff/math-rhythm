@@ -9,6 +9,7 @@ window.onload = new function() {
 	var volume = 0.00;
 	const array_textos = ["Visite a pagina de ajuda caso seja a sua primeira vez jogando!", "Isso tudo foi feito em JavaScript.", "Uma variavel abudabi ja fez muita historia.", "O cérebro humano pesa cerca de 1,4 quilos."
 	, "Obrigado por jogar!", "O jogo esta muito dificil ou muito facil? Visite a pagina de configurações!", "O infinito pode ser dividido ao meio, resultando em pares e impares", "O infinito é um numero par ou impar?", "Não existe uma fórmula para gerar números primos"];
+	const array_perguntas = [["X + 1 = 3, qual o valor de x","3"],["Biscoito ou Bolacha","Cookie"]];
 
 	var mapDiv = document.getElementById('map');
 	var scoreboard = document.getElementById("scoreboard"); 
@@ -125,6 +126,7 @@ window.onload = new function() {
 			// huds.forEach(hud => {
 			// hud.style.width = '20%';
 			// });
+			document.getElementById("pauseBTNinfo").innerHTML = "Pausar";
 			
 			var tamanhoTela = window.innerHeight
 			document.getElementById("path").style.height = (tamanhoTela / 100 * 90.9) + "px"
@@ -255,6 +257,10 @@ window.onload = new function() {
 		speed = document.querySelector('#velocidade').value
 		volume = document.querySelector('#volume').value / 100
 
+		// parar som
+		som.pause();
+		som.currentTime = 0;
+
 		// Setando teclas de jogo
 		if (document.getElementById("tecla1").value != "") {
 			tecla1 = document.getElementById("tecla1").value
@@ -282,6 +288,11 @@ window.onload = new function() {
         	document.getElementById("menu-config").style.display = "none";
 		}
     });
+
+	// Mudar volume da música
+	document.getElementById('volume').addEventListener("input", function() {
+		som.volume = document.getElementById('volume').value;
+	});
 
 	// Botão de voltar - Ajuda
 	document.getElementById('button-back-ajuda').addEventListener('click', function() {
@@ -447,10 +458,33 @@ window.onload = new function() {
 				som.pause();
 				clearInterval(criar);
 				clearInterval(descer);
-				document.getElementById("menu-pause").style.display = "flex";
-			}
+				document.getElementById("menu-quest").style.display = "flex";
+				geraPergunta();
 			}
 		}
+	}
+
+	function geraPergunta() {
+		var sinal = Math.floor(Math.random() * 2) + 1;
+		var razao = Math.floor(Math.random() * 9) + 1;
+		var elemento = Math.floor(Math.random() * 9) + 1;
+		
+		var primeiroNumero = Math.floor(Math.random() * 100) + 1;
+		var segundoNumero = 0;
+		var terceiroNumero = 0;
+		
+		if (sinal == 1){
+			razao *= -1;
+			segundoNumero = primeiroNumero + razao;
+			terceiroNumero = segundoNumero + razao;
+		} else if (sinal == 2){
+			razao *= 1;
+			segundoNumero = primeiroNumero + razao;
+			terceiroNumero = segundoNumero + razao;
+		}
+		
+		document.getElementById("pergunta-random").innerHTML = "Dada a sequência ( " + primeiroNumero + ", " + segundoNumero + ", " + terceiroNumero + " ... ) em que a razão é igual a " + razao + ". Qual a posição do " + elemento + "º elemento?";
+	}
 
 	function verificaIniciar() {
 		if (iniciar == 1) {
