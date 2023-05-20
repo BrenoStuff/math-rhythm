@@ -326,6 +326,10 @@ window.onload = new function() {
 			note.remove();
 		});
 		abudabi = setInterval(verificaIniciar, 1);
+		gamePause = setInterval(verificaVida, 1);
+
+		contadorV = 10;
+		contadorVidasRestantes = 3;
 
 		btt = 0;
 		err = 0;
@@ -337,6 +341,48 @@ window.onload = new function() {
 
 		document.getElementById("menu").style.display = "flex";
 		document.getElementById("menu-pause").style.display = "none";
+	});
+
+	// Botão voltar - Menu questão
+	document.getElementById("button-back-quest").addEventListener("click", function() {
+		iniciar = 0;
+		pause = false;
+		contadorPause = 2;
+
+		contador = 0;
+		pontos = 0;
+		comboMax = [];
+
+		acertos.innerHTML = 0;
+		contagem.innerHTML = 0;
+		erros.innerHTML = 0;
+		combos.innerHTML = 0 + "x";
+		comboM.innerHTML = 0 + "x";
+
+		animacao.classList.remove("path-correct");
+		animacao.classList.remove("path-wrong");
+
+		notas = [];
+		const notes = document.querySelectorAll('.beat');
+		notes.forEach((note) => {
+			note.remove();
+		});
+		abudabi = setInterval(verificaIniciar, 1);
+		gamePause = setInterval(verificaVida, 1);
+
+		contadorV = 10;
+		contadorVidasRestantes = 3;
+
+		btt = 0;
+		err = 0;
+		acc = 0;
+		combo = 0;
+		contadorV = 10;
+
+		som.currentTime = 0;
+
+		document.getElementById("menu").style.display = "flex";
+		document.getElementById("menu-quest").style.display = "none";
 	});
 
 	// Botão check geral
@@ -493,6 +539,7 @@ window.onload = new function() {
 		if (resposta == document.getElementById("resposta").value){
 			document.getElementById("menu-quest").style.display = "none";
 			contadorV = 10;
+			contadorVidasRestantes = 3;
 
 			setTimeout(() => {
 				gamePause = setInterval(verificaVida, 1);
