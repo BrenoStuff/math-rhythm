@@ -420,5 +420,13 @@ cursor: pointer;
 }
 
 #button-addon2:hover {
-	background-color: #eb2424;
+	background-color: #a8a8a8;
+}
+
+#resposta {
+	padding: 20px;
+	margin-bottom: 15px;
+	text-align: center;
+	border-radius: 50px;
+	background-color:white;
 }
