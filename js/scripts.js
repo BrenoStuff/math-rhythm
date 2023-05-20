@@ -27,6 +27,7 @@ window.onload = new function() {
 
 	var contador = 0;
 	var contadorV = 10;
+	var contadorVidasRestantes = 3;
 	var notas = [];
 	var pontos = 0;
 	var comboMax = [];
@@ -506,7 +507,14 @@ window.onload = new function() {
 				descer = setInterval(descerDiv, speed * 5)
 			}, 1500);
 		} else {
-			alert('burro');
+			if (contadorVidasRestantes >= 0){
+				alert("Resposta errada! Você tem mais " + contadorVidasRestantes + " tentativas.");
+				contadorVidasRestantes--;
+			} else {
+				alert("Resposta errada! Você não tem mais tentativas. O jogo será finalizado.");
+				var pontuacoes = [pontos, acc, err, cbFinal];
+				window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
+			}
 		}
 	})
 
