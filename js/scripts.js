@@ -525,7 +525,7 @@ window.onload = new function() {
 						if (e.key === "Escape" || e.key === " ") {
 							isKeyPause = true;
 						}
-						if (isKeyPause && iniciar == 1) {
+						if (isKeyPause && iniciar == 1 && pause == false) {
 							som.pause();
 							clearInterval(criar);
 							clearInterval(descer);
