@@ -452,6 +452,7 @@ window.onload = new function() {
 
 	function verificaVida() {
 		if (contadorV <= 0) {
+			pause = true;
 			clearInterval(gamePause);
 			som.pause();
 
@@ -494,6 +495,7 @@ window.onload = new function() {
 
 			setTimeout(() => {
 				gamePause = setInterval(verificaVida, 1);
+				pause = false;
 				som.play();
 				if (gamemode != "primo"){
 					criar = setInterval(criarDiv, 200);
