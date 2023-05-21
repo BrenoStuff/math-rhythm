@@ -576,7 +576,6 @@ window.onload = new function() {
 					criar = setInterval(criarDiv, 500);
 				}
 				descer = setInterval(descerDiv, speed * 5);
-				console.log('Resposta certa!');
 				document.getElementById("resposta").value = "";
 			}, 1500);
 		} else {
@@ -606,7 +605,6 @@ window.onload = new function() {
 
 				clearInterval(descer)
 				descer = setInterval(descerDiv, speed * 5);
-				console.log('verificarIniciou!')
 
 				// Abrir menu de pause
 				document.addEventListener("keydown", (e) => {
@@ -652,7 +650,6 @@ window.onload = new function() {
 						pause = false;
 						clearInterval(descer);
 						descer = setInterval(descerDiv, speed * 5);
-						console.log('verificarIniciou! pause = false')
 						if (contadorPause % 2 != 0){
 							contadorPause++;
 							verificaIniciar();
