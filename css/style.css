@@ -385,7 +385,29 @@ cursor: pointer;
 	height: 20px;
 	width: 400px;
 	background-color: blueviolet;
+	border-radius: 20px 0px 0px 20px;
+	box-shadow: 0px 1px 2px rgba(165, 69, 255, 0.5),
+	0px 2px 4px rgba(165, 69, 255, 0.5),
+	0px 3px 6px rgba(165, 69, 255, 0.5);
 }
+
+.pisca-pisca {
+	margin-left: -10px;
+	box-shadow: 0px 1px 2px rgba(165, 69, 255, 0.5),
+	0px 2px 4px rgba(165, 69, 255, 0.5),
+	0px 3px 6px rgba(165, 69, 255, 0.5);
+    background-color: blueviolet;
+	-webkit-animation: glow 3s linear 0s infinite alternate;
+}
+
+@-webkit-keyframes glow {
+	0% {
+	  box-shadow: 0 0 60px 20px #ff00ff, 25px 15px 50px 10px #ff00dd, -5px -25px 30px 5px #ff00ee;
+	}
+	100% {
+	  box-shadow: 0 0 90px 20px #0d00ff, 35px 20px 40px 10px #2600ff, -30px -30px 40px 5px #1500ff;
+	}
+  }
 
 #menu-quest {
 	background:rgba(104, 104, 104, 0.80);
