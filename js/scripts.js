@@ -384,6 +384,13 @@ window.onload = new function() {
 		document.getElementById("menu-quest").style.display = "none";
 	});
 
+	// Botão voltar - Menu resultado final
+	document.getElementById("button-back-result").addEventListener("click", function() {
+		clearToPlayAgain();
+		document.getElementById("menu").style.display = "flex";
+		document.getElementById("menu-pontos").style.display = "none";
+	});
+
 	// Botão check geral
 	document.getElementById("check").addEventListener("click", function() {
 		alert('Plataforma: ' + plataform + '\rMúsica: ' + music + '\rModo: ' + gamemode + '\rVolume: ' + volume + '\rAltura da tela: ' + mapDiv.offsetHeight + 'px' + '\rTecla1: ' + tecla1 + '\rTecla2: ' + tecla2 + '\rTecla3: ' + tecla3 + '\rTecla4: ' + tecla4);
@@ -559,8 +566,9 @@ window.onload = new function() {
 				contadorVidasRestantes--;
 			} else {
 				alert("Resposta errada! Você não tem mais tentativas. O jogo será finalizado.");
-				var pontuacoes = [pontos, acc, err, cbFinal];
-				window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
+				document.getElementById("menu-quest").style.display = "none";
+				finalResult();
+				document.getElementById("menu-pontos").style.display = "flex";
 			}
 		}
 	})
@@ -604,9 +612,8 @@ window.onload = new function() {
 				som.addEventListener("ended", () => {
 					clearInterval(criar);
 					setTimeout(() => {
-						var pontuacoes = [pontos, acc, err, cbFinal];
+						finalResult();
 						document.getElementById("menu-pontos").style.display = "flex";
-						//window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
 					}, 3000);
 				});
 			} else if (pause == true){
@@ -636,5 +643,76 @@ window.onload = new function() {
 				clearInterval(descer);
 			}
 		}
+	}
+
+	function clearToPlayAgain() {
+		iniciar = 0;
+		pause = false;
+		contadorPause = 2;
+
+		contador = 0;
+		pontos = 0;
+		comboMax = [];
+
+		acertos.innerHTML = 0;
+		contagem.innerHTML = 0;
+		erros.innerHTML = 0;
+		combos.innerHTML = 0 + "x";
+		comboM.innerHTML = 0 + "x";
+
+		animacao.classList.remove("path-correct");
+		animacao.classList.remove("path-wrong");
+
+		notas = [];
+		const notes = document.querySelectorAll('.beat');
+		notes.forEach((note) => {
+			note.remove();
+		});
+		clearInterval(abudabi);
+		abudabi = setInterval(verificaIniciar, 1);
+		clearInterval(gamePause);
+		gamePause = setInterval(verificaVida, 1);
+
+		contadorV = 10;
+		contadorVidasRestantes = 3;
+
+		btt = 0;
+		err = 0;
+		acc = 0;
+		combo = 0;
+		contadorV = 10;
+
+		som.pause();
+		som.currentTime = 0;
+	}
+
+	function finalResult() {
+		var letraResult = document.getElementById("letrasResult");
+		var pontosResult = document.getElementById("contagemResult");
+		var acertosResult = document.getElementById("acertosResult");
+		var errosResult = document.getElementById("errosResult");
+		var comboResult = document.getElementById("maxComboResult");
+		var porcentagemResult = document.getElementById("porcentagemResult");
+		
+		var totalResult = parseInt(acc) + parseInt(err);
+		var pctResult = (acc * 100) / totalResult;
+
+		if (pctResult == 100){
+			letraResult.innerHTML = "SS";
+		} else if (pctResult >= 95 && pctResult < 100) {
+			letraResult.innerHTML = "S";
+		} else if (pctResult >= 90 && pctResult < 95) {
+			letraResult.innerHTML = "A";
+		} else if (pctResult >= 80 && pctResult < 90){
+			letraResult.innerHTML = "B";
+		} else if (pctResult < 80){
+			letraResult.innerHTML = "C";
+		}
+
+		pontosResult.innerHTML = pontos;
+		acertosResult.innerHTML = acc;
+		errosResult.innerHTML = err;
+		comboResult.innerHTML = cbFinal;
+		porcentagemResult.innerHTML = pctResult.toFixed(2) + "% de acertos";
 	}
 }
