@@ -292,7 +292,7 @@ window.onload = new function() {
 
 	// Mudar volume da música
 	document.getElementById('volume').addEventListener("input", function() {
-		som.volume = document.getElementById('volume').value;
+		som.volume = document.getElementById('volume').value / 100;
 	});
 
 	// Botão de voltar - Ajuda
