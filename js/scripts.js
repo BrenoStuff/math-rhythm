@@ -326,7 +326,6 @@ window.onload = new function() {
 			note.remove();
 		});
 		abudabi = setInterval(verificaIniciar, 1);
-		gamePause = setInterval(verificaVida, 1);
 
 		contadorV = 10;
 		contadorVidasRestantes = 3;
@@ -552,6 +551,7 @@ window.onload = new function() {
 				}
 				barraDeVida.style.width = 400 + "px";
 				descer = setInterval(descerDiv, speed * 5)
+				console.log('Resposta certa!')
 			}, 1500);
 		} else {
 			if (contadorVidasRestantes >= 0){
@@ -574,6 +574,11 @@ window.onload = new function() {
 				} else {
 					criar = setInterval(criarDiv, 500);
 				}
+
+				clearInterval(descer)
+				descer = setInterval(descerDiv, speed * 5);
+				console.log('verificarIniciou!')
+
 				// Abrir menu de pause
 				document.addEventListener("keydown", (e) => {
 					if (!e.repeat){
@@ -595,9 +600,6 @@ window.onload = new function() {
 						}
 					}
 				});
-
-				clearInterval(descer)
-				descer = setInterval(descerDiv, speed * 5);
 
 				som.addEventListener("ended", () => {
 					clearInterval(criar);
@@ -621,6 +623,7 @@ window.onload = new function() {
 						pause = false;
 						clearInterval(descer);
 						descer = setInterval(descerDiv, speed * 5);
+						console.log('verificarIniciou! pause = false')
 						if (contadorPause % 2 != 0){
 							contadorPause++;
 							verificaIniciar();
