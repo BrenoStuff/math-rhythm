@@ -527,3 +527,15 @@ cursor: pointer;
   	-webkit-background-clip: text; /* suporte para navegadores WebKit (Chrome, Safari, etc.) */
   	color: transparent;
 }
+
+#dica {
+	color: white;
+	font-family: 'Inter', sans-serif;
+	font-size: 14px;
+}
+
+#titulo {
+	margin-top: 10vh;
+	margin-bottom: 10vh;
+	color: white;
+}

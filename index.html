@@ -140,12 +140,13 @@
 
 	<!-- Menu pergunta modal -->
 	<div id="menu-quest" class="modal">
-		<div class="titulo">
+		<div id="titulo">
 			<h1> Você perdeu! </h1>
 			<p>	Responda corretamente para ter uma nova chance. </p>
 		</div>
 		<div>
 			<p id="pergunta-random"></p>
+			<p id="dica">DICA: Resultado = primeiro termo + (posição que quer descobrir - 1) * razão</p>
 			<div style="flex-direction:row; justify-content: center;">
 				<input type="text" placeholder="R:" id="resposta">
 				<button id="button-addon2">Responder</button>
