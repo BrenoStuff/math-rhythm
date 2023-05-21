@@ -511,7 +511,7 @@ cursor: pointer;
 	position: absolute;
 	color: black;
 	font-family: 'Aladin', cursive;
-	top: 60vh;
+	top: 10vh;
 	left: 32%;
 	height: 50px;
 	width: 150px;
@@ -522,7 +522,7 @@ cursor: pointer;
 	margin: 0;
 	padding: 0;
 	font-size: 60px;
-	background-image: linear-gradient(to right, red, rgb(255, 0, 217), blue, indigo);
+	background-image: linear-gradient(to right, blue, indigo);
   	background-clip: text;
   	-webkit-background-clip: text; /* suporte para navegadores WebKit (Chrome, Safari, etc.) */
   	color: transparent;
