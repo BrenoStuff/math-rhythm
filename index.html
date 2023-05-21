@@ -15,30 +15,6 @@
 </head>
 <body>
 
-	<!-- Menu pontuação final (ta bugado)-->
-	<div id="menu-pontos" class="modal">
-		<section class="conteudo">
-			<h1 id="score" style="text-align: center;">RESULTADO</h1>
-			<div style="display: -webkit-box;">
-				<div id="div-1">		
-					<p class="info">Pontuação: </p>
-					<p id="contagemResult" class="pts">0</p>
-					<p class="info">Acertos: </p>
-					<p id="acertosResult" class="pts">0</p>
-					<p class="info">Erros: </p>
-					<p id="errosResult" class="pts">0</p>
-					<p class="info">Combo Max: </p>
-					<p id="maxComboResult" class="pts">0x</p>
-				</div>
-				<div id="div-2">		
-					<p id="porcentagemResult"></p>
-					<p id="letrasResult">SS</p>
-					<button id="button-back-result">Voltar ao menu principal</a>
-				</div>
-			</div>
-		</section>
-	</div>
-
 	<!-- Menu inicial -->
 	<div id="menu" class="modal">
 		<div class="titulo">
@@ -146,19 +122,44 @@
 		</div>
 		<div>
 			<p id="pergunta-random"></p>
-			<p id="dica">DICA: Resultado = primeiro termo + (posição que quer descobrir - 1) * razão</p>
 			<div style="flex-direction:row; justify-content: center;">
 				<input type="text" placeholder="R:" id="resposta">
 				<button id="button-addon2">Responder</button>
 			</div>
 			<button id="button-back-quest"> VOLTAR AO MENU </button>
+			<p id="dica">DICA: Resultado = primeiro termo + (posição que quer descobrir - 1) * razão</p>
 		</div>
+		
+	</div>
+
+	<!-- Menu pontuação final -->
+	<div id="menu-pontos" class="modal">
+		<section class="conteudo">
+			<h1 id="score" style="text-align: center;">RESULTADO</h1>
+			<div style="display: -webkit-box;">
+				<div id="div-1">		
+					<p class="info">Pontuação: </p>
+					<p id="contagemResult" class="pts">0</p>
+					<p class="info">Acertos: </p>
+					<p id="acertosResult" class="pts">0</p>
+					<p class="info">Erros: </p>
+					<p id="errosResult" class="pts">0</p>
+					<p class="info">Combo Max: </p>
+					<p id="maxComboResult" class="pts">0x</p>
+				</div>
+				<div id="div-2">		
+					<p id="porcentagemResult"></p>
+					<p id="letrasResult">SS</p>
+					<button id="button-back-result">Voltar ao menu principal</a>
+				</div>
+			</div>
+		</section>
 	</div>
 
 	<!-- Hud lateral do score -->
 	<div id="scoreboard" class="container score">
 		<div class="hud">
-			<p id="score">Score</p>
+			<p id="score">SCORE</p>
 			<hr>	
 			<p class="info">Pontuação: </p>
 			<p id="contagem" class="pts">0</p>
