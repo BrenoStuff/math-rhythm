@@ -306,6 +306,7 @@ window.onload = new function() {
 		iniciar = 0;
 		pause = false;
 		contadorPause = 2;
+		barraDeVida.style.width = 400 + "px";
 
 		contador = 0;
 		pontos = 0;
@@ -347,6 +348,7 @@ window.onload = new function() {
 		iniciar = 0;
 		pause = false;
 		contadorPause = 2;
+		barraDeVida.style.width = 400 + "px";
 
 		contador = 0;
 		pontos = 0;
@@ -387,6 +389,7 @@ window.onload = new function() {
 	// Botão voltar - Menu resultado final
 	document.getElementById("button-back-result").addEventListener("click", function() {
 		clearToPlayAgain();
+		barraDeVida.style.width = 400 + "px";
 		document.getElementById("menu").style.display = "flex";
 		document.getElementById("menu-pontos").style.display = "none";
 	});
@@ -420,6 +423,11 @@ window.onload = new function() {
 
 				if (posY >= posKey.y - 70 && posY < posKey.y - 40 && btt == notas[i][j + 1]) {
 					err = err + 1;
+					document.getElementById("exibir-pontosP").innerHTML = 150;
+					document.getElementById("exibir-pontos").style.display = "block";
+					setTimeout(() => {
+						document.getElementById("exibir-pontos").style.display = "none";
+					}, 600);
 					if (contadorV >= 0){
 						contadorV--;
 					} else if (contadorV < 0){
@@ -442,6 +450,11 @@ window.onload = new function() {
 					notas.shift();
 				} else if (posY >= posKey.y - 40 && posY < posKey.y + 30 && btt == notas[i][j + 1]) {
 					acc = acc + 1;
+					document.getElementById("exibir-pontosP").innerHTML = 300;
+					document.getElementById("exibir-pontos").style.display = "block";
+					setTimeout(() => {
+						document.getElementById("exibir-pontos").style.display = "none";
+					}, 600);
 					if (contadorV <= 10){
 						contadorV++;
 						if (parseInt(barraDeVida.style.width) + 40 < 400){
@@ -470,6 +483,11 @@ window.onload = new function() {
 					notas.shift();
 				} else if (posY >= posKey.y + 30 && btt == 0 || posY >= posKey.y + 30 && btt == notas[i][j + 1]) {
 					err = err + 1;
+					document.getElementById("exibir-pontosP").innerHTML = 75;
+					document.getElementById("exibir-pontos").style.display = "block";
+					setTimeout(() => {
+						document.getElementById("exibir-pontos").style.display = "none";
+					}, 600);
 					if (contadorV >= 0){
 						contadorV--;
 					} else if (contadorV < 0){
@@ -546,7 +564,8 @@ window.onload = new function() {
 			document.getElementById("menu-quest").style.display = "none";
 			contadorV = 10;
 			contadorVidasRestantes = 3;
-
+			incrementoDecremento = 400;
+			barraDeVida.style.width = 400 + "px";
 			setTimeout(() => {
 				gamePause = setInterval(verificaVida, 1);
 				pause = false;
@@ -556,19 +575,21 @@ window.onload = new function() {
 				} else {
 					criar = setInterval(criarDiv, 500);
 				}
-				barraDeVida.style.width = 400 + "px";
-				descer = setInterval(descerDiv, speed * 5)
-				console.log('Resposta certa!')
+				descer = setInterval(descerDiv, speed * 5);
+				console.log('Resposta certa!');
+				document.getElementById("resposta").value = "";
 			}, 1500);
 		} else {
 			if (contadorVidasRestantes >= 0){
 				alert("Resposta errada! Você tem mais " + contadorVidasRestantes + " tentativas.");
 				contadorVidasRestantes--;
+				document.getElementById("resposta").value = "";
 			} else {
 				alert("Resposta errada! Você não tem mais tentativas. O jogo será finalizado.");
 				document.getElementById("menu-quest").style.display = "none";
 				finalResult();
 				document.getElementById("menu-pontos").style.display = "flex";
+				document.getElementById("resposta").value = "";
 			}
 		}
 	})
