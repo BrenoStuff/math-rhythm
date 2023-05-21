@@ -605,7 +605,8 @@ window.onload = new function() {
 					clearInterval(criar);
 					setTimeout(() => {
 						var pontuacoes = [pontos, acc, err, cbFinal];
-						window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
+						document.getElementById("menu-pontos").style.display = "flex";
+						//window.location.href = 'views/finalScore.html?pontuacoes=' + pontuacoes;
 					}, 3000);
 				});
 			} else if (pause == true){
