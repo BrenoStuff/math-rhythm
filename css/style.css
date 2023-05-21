@@ -320,7 +320,7 @@ hr {
 
 #homeBTN p {
 	color: white;
-	font-size: 0.5em;
+	font-size: 0.8em;
 }
 
 #texto-aleatorio {
@@ -457,7 +457,11 @@ cursor: pointer;
 	color: rgb(27, 27, 27);
 	display: none;
 	justify-content: center;
-	padding: 50px;
+	align-items: center;
+}
+
+#menu-pontos section {
+	width: 70%;
 }
 
 #menu-pontos #div-1 {
@@ -468,11 +472,33 @@ cursor: pointer;
 	width: 50%;
 }
 
+#menu-pontos #porcentagemResult {
+	font-size: 2em;
+    font-weight: bolder;
+    margin-bottom: 0px;
+}
+
 #menu-pontos #div-2 #letrasResult {
-	font-size: 6em;
+	font-size: 12em;
 	font-weight: 900;
 	color: #9c009f;
 }
+
+#menu-pontos button {
+	text-decoration: underline;
+	font-size: 2em;
+	padding: 10px;
+	font-weight: 900;
+	text-align: center;
+	border-radius: 50px;
+	border: none;
+	background-color: rgb(255, 255, 255);
+}
+
+#menu-pontos button:hover {
+	background-color: #a8a8a8;
+}
+
 
 #menu {
 	display: flex;
