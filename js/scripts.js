@@ -3,7 +3,7 @@ window.onload = new function() {
 	var plataform = "desktop";
 	var music = "msc/music1.mp3";
 	var gamemode = "par";
-	var speed = 1;
+	var speed = 2;
 	var descer;
 	var array_primo = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
 	var volume = 0.05;
@@ -418,10 +418,10 @@ window.onload = new function() {
 			for (j = 0; j < 1; j++) {
 				let nota = notas[i][j];
 				let posY = parseInt(nota.style.top || 0);
-				posY += 3;
+				posY += 1 * speed;
 				nota.style.top = posY + "px";
 
-				if (posY >= posKey.y - 70 && posY < posKey.y - 40 && btt == notas[i][j + 1]) {
+				if (posY >= posKey.y - 90 && posY < posKey.y - 60 && btt == notas[i][j + 1]) {
 					err = err + 1;
 					document.getElementById("exibir-pontosP").innerHTML = 150;
 					document.getElementById("exibir-pontos").style.display = "block";
@@ -448,7 +448,7 @@ window.onload = new function() {
 					nota.remove();
 					nota.style.top = null;
 					notas.shift();
-				} else if (posY >= posKey.y - 40 && posY < posKey.y + 30 && btt == notas[i][j + 1]) {
+				} else if (posY >= posKey.y - 60 && posY < posKey.y + 30 && btt == notas[i][j + 1]) {
 					acc = acc + 1;
 					document.getElementById("exibir-pontosP").innerHTML = 300;
 					document.getElementById("exibir-pontos").style.display = "block";
@@ -571,11 +571,11 @@ window.onload = new function() {
 				pause = false;
 				som.play();
 				if (gamemode != "primo"){
-					criar = setInterval(criarDiv, 200);
+					criar = setInterval(criarDiv, 800 / speed);
 				} else {
-					criar = setInterval(criarDiv, 500);
+					criar = setInterval(criarDiv, 1000 / speed);
 				}
-				descer = setInterval(descerDiv, speed * 5);
+				descer = setInterval(descerDiv,  5);
 				document.getElementById("resposta").value = "";
 			}, 1500);
 		} else {
@@ -598,13 +598,13 @@ window.onload = new function() {
 			if (pause == false){
 				clearInterval(abudabi);
 				if (gamemode != "primo"){
-					criar = setInterval(criarDiv, 200);
+					criar = setInterval(criarDiv, 800 / speed);
 				} else {
-					criar = setInterval(criarDiv, 500);
+					criar = setInterval(criarDiv, 1000 / speed);
 				}
 
 				clearInterval(descer)
-				descer = setInterval(descerDiv, speed * 5);
+				descer = setInterval(descerDiv, 5);
 
 				// Abrir menu de pause
 				document.addEventListener("keydown", (e) => {
@@ -637,9 +637,9 @@ window.onload = new function() {
 				});
 			} else if (pause == true){
 				if (gamemode != "primo"){
-					criar = setInterval(criarDiv, 200);
+					criar = setInterval(criarDiv, 800 / speed);
 				} else {
-					criar = setInterval(criarDiv, 500);
+					criar = setInterval(criarDiv, 1000 / speed);
 				}
 
 				// Botão fechar menu de pause
@@ -649,7 +649,7 @@ window.onload = new function() {
 						som.play();
 						pause = false;
 						clearInterval(descer);
-						descer = setInterval(descerDiv, speed * 5);
+						descer = setInterval(descerDiv, 5);
 						if (contadorPause % 2 != 0){
 							contadorPause++;
 							verificaIniciar();
